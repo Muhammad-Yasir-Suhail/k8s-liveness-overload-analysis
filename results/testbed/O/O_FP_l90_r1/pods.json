@@ -1,0 +1,1855 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:23:58Z",
+                "generateName": "dep-6c7bbff984-",
+                "labels": {
+                    "app": "dep",
+                    "pod-template-hash": "6c7bbff984"
+                },
+                "name": "dep-6c7bbff984-wszhn",
+                "namespace": "g18-o-fp-l90-r1",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "dep-6c7bbff984",
+                        "uid": "c51362d0-888b-42fb-9a38-97d876bde7c9"
+                    }
+                ],
+                "resourceVersion": "21705",
+                "uid": "3f5e6d6d-581a-4504-a59a-344a92a97a52"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "ROLE",
+                                "value": "dep"
+                            }
+                        ],
+                        "image": "g18/tools:latest",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "dep",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 2,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "64Mi"
+                            },
+                            "requests": {
+                                "cpu": "50m",
+                                "memory": "16Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-lrlxb",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-lrlxb",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:24:00Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:24:00Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://12f1da346fe918fd8066badb9bee223f96caf000a8487502a83204486331912f",
+                        "image": "docker.io/g18/tools:latest",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0dba18bf75c3e7d6f488db383ab8428f601cb38ba055dfeaf242ede85976eddb",
+                        "lastState": {},
+                        "name": "dep",
+                        "ready": true,
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-10-10T09:23:59Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Running",
+                "podIP": "10.244.0.44",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.44"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T09:23:58Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"loadgen\"},\"name\":\"loadgen\",\"namespace\":\"g18-o-fp-l90-r1\"},\"spec\":{\"containers\":[{\"command\":[\"/loadgen\"],\"env\":[{\"name\":\"TARGET\",\"value\":\"http://sut/work\"},{\"name\":\"MODE\",\"value\":\"open\"},{\"name\":\"RATE\",\"value\":\"58.3\"},{\"name\":\"USERS\",\"value\":\"0\"},{\"name\":\"PACE_MS\",\"value\":\"0\"},{\"name\":\"DURATION_S\",\"value\":\"240\"},{\"name\":\"TIMEOUT_MS\",\"value\":\"2000\"},{\"name\":\"SEED\",\"value\":\"1\"},{\"name\":\"BURST_AT_S\",\"value\":\"-1\"},{\"name\":\"BURST_LEN_S\",\"value\":\"0\"},{\"name\":\"BURST_RATE\",\"value\":\"0\"}],\"image\":\"g18/tools:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"loadgen\",\"resources\":{\"limits\":{\"cpu\":\"1\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"64Mi\"}}}],\"restartPolicy\":\"Never\"}}\n"
+                },
+                "creationTimestamp": "2026-10-10T09:24:24Z",
+                "labels": {
+                    "app": "loadgen"
+                },
+                "name": "loadgen",
+                "namespace": "g18-o-fp-l90-r1",
+                "resourceVersion": "22625",
+                "uid": "c55f8bda-6d12-44c3-99f1-484796c817cf"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "/loadgen"
+                        ],
+                        "env": [
+                            {
+                                "name": "TARGET",
+                                "value": "http://sut/work"
+                            },
+                            {
+                                "name": "MODE",
+                                "value": "open"
+                            },
+                            {
+                                "name": "RATE",
+                                "value": "58.3"
+                            },
+                            {
+                                "name": "USERS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "PACE_MS",
+                                "value": "0"
+                            },
+                            {
+                                "name": "DURATION_S",
+                                "value": "240"
+                            },
+                            {
+                                "name": "TIMEOUT_MS",
+                                "value": "2000"
+                            },
+                            {
+                                "name": "SEED",
+                                "value": "1"
+                            },
+                            {
+                                "name": "BURST_AT_S",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "BURST_LEN_S",
+                                "value": "0"
+                            },
+                            {
+                                "name": "BURST_RATE",
+                                "value": "0"
+                            }
+                        ],
+                        "image": "g18/tools:latest",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "loadgen",
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "512Mi"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "64Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-nc4cx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-nc4cx",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:24:24Z",
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:28:27Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:28:27Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:24:24Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://908c38e9759b48326a940d19f91bf7e1eeb40e97ee4e51a1282ef61ff3f67510",
+                        "image": "docker.io/g18/tools:latest",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0dba18bf75c3e7d6f488db383ab8428f601cb38ba055dfeaf242ede85976eddb",
+                        "lastState": {},
+                        "name": "loadgen",
+                        "ready": false,
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://908c38e9759b48326a940d19f91bf7e1eeb40e97ee4e51a1282ef61ff3f67510",
+                                "exitCode": 0,
+                                "finishedAt": "2026-10-10T09:28:26Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-10-10T09:24:24Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Succeeded",
+                "podIP": "10.244.0.45",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.45"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T09:24:24Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:23:58Z",
+                "generateName": "sut-799cd5c56-",
+                "labels": {
+                    "app": "sut",
+                    "pod-template-hash": "799cd5c56"
+                },
+                "name": "sut-799cd5c56-67lwz",
+                "namespace": "g18-o-fp-l90-r1",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "sut-799cd5c56",
+                        "uid": "5da65645-a967-4b5f-9e9b-4a2495cbe3e2"
+                    }
+                ],
+                "resourceVersion": "22528",
+                "uid": "638bc662-59ed-4122-805f-c2b393e1f84b"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "ROLE",
+                                "value": "sut"
+                            },
+                            {
+                                "name": "WORKERS",
+                                "value": "4"
+                            },
+                            {
+                                "name": "WORK_UNITS",
+                                "value": "100000"
+                            },
+                            {
+                                "name": "LIVENESS_WINDOW_MS",
+                                "value": "5000"
+                            },
+                            {
+                                "name": "DEP_URL",
+                                "value": "http://dep:8080/dep"
+                            }
+                        ],
+                        "image": "g18/tools:latest",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 5,
+                            "periodSeconds": 1,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "sut",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 6,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "200m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-bjnrk",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 5,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-bjnrk",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:46Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:46Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://975461343973570aaee47412c450aba1f547ca536215504019c619fae0518aeb",
+                        "image": "docker.io/g18/tools:latest",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0dba18bf75c3e7d6f488db383ab8428f601cb38ba055dfeaf242ede85976eddb",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "containerd://975461343973570aaee47412c450aba1f547ca536215504019c619fae0518aeb",
+                                "exitCode": 2,
+                                "finishedAt": "2026-10-10T09:27:44Z",
+                                "reason": "Error",
+                                "startedAt": "2026-10-10T09:27:38Z"
+                            }
+                        },
+                        "name": "sut",
+                        "ready": false,
+                        "restartCount": 6,
+                        "started": false,
+                        "state": {
+                            "waiting": {
+                                "message": "back-off 2m40s restarting failed container=sut pod=sut-799cd5c56-67lwz_g18-o-fp-l90-r1(638bc662-59ed-4122-805f-c2b393e1f84b)",
+                                "reason": "CrashLoopBackOff"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Running",
+                "podIP": "10.244.0.38",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.38"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T09:23:58Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:23:58Z",
+                "generateName": "sut-799cd5c56-",
+                "labels": {
+                    "app": "sut",
+                    "pod-template-hash": "799cd5c56"
+                },
+                "name": "sut-799cd5c56-6ncxq",
+                "namespace": "g18-o-fp-l90-r1",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "sut-799cd5c56",
+                        "uid": "5da65645-a967-4b5f-9e9b-4a2495cbe3e2"
+                    }
+                ],
+                "resourceVersion": "22579",
+                "uid": "41c127ae-1b1b-4cca-a4b5-1597ae1f20ed"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "ROLE",
+                                "value": "sut"
+                            },
+                            {
+                                "name": "WORKERS",
+                                "value": "4"
+                            },
+                            {
+                                "name": "WORK_UNITS",
+                                "value": "100000"
+                            },
+                            {
+                                "name": "LIVENESS_WINDOW_MS",
+                                "value": "5000"
+                            },
+                            {
+                                "name": "DEP_URL",
+                                "value": "http://dep:8080/dep"
+                            }
+                        ],
+                        "image": "g18/tools:latest",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 5,
+                            "periodSeconds": 1,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "sut",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 6,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "200m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-ncdb2",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 5,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-ncdb2",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:59Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:59Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://1e426133c78ba068aa00a428e3b324d3ef2ebadd6a7a757be20453a0b54c319d",
+                        "image": "docker.io/g18/tools:latest",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0dba18bf75c3e7d6f488db383ab8428f601cb38ba055dfeaf242ede85976eddb",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "containerd://1e426133c78ba068aa00a428e3b324d3ef2ebadd6a7a757be20453a0b54c319d",
+                                "exitCode": 2,
+                                "finishedAt": "2026-10-10T09:27:58Z",
+                                "reason": "Error",
+                                "startedAt": "2026-10-10T09:27:52Z"
+                            }
+                        },
+                        "name": "sut",
+                        "ready": false,
+                        "restartCount": 6,
+                        "started": false,
+                        "state": {
+                            "waiting": {
+                                "message": "back-off 2m40s restarting failed container=sut pod=sut-799cd5c56-6ncxq_g18-o-fp-l90-r1(41c127ae-1b1b-4cca-a4b5-1597ae1f20ed)",
+                                "reason": "CrashLoopBackOff"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Running",
+                "podIP": "10.244.0.40",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.40"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T09:23:58Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:23:58Z",
+                "generateName": "sut-799cd5c56-",
+                "labels": {
+                    "app": "sut",
+                    "pod-template-hash": "799cd5c56"
+                },
+                "name": "sut-799cd5c56-d8fqp",
+                "namespace": "g18-o-fp-l90-r1",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "sut-799cd5c56",
+                        "uid": "5da65645-a967-4b5f-9e9b-4a2495cbe3e2"
+                    }
+                ],
+                "resourceVersion": "22513",
+                "uid": "ea6b8eca-0192-473c-92eb-a786ee5d8c47"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "ROLE",
+                                "value": "sut"
+                            },
+                            {
+                                "name": "WORKERS",
+                                "value": "4"
+                            },
+                            {
+                                "name": "WORK_UNITS",
+                                "value": "100000"
+                            },
+                            {
+                                "name": "LIVENESS_WINDOW_MS",
+                                "value": "5000"
+                            },
+                            {
+                                "name": "DEP_URL",
+                                "value": "http://dep:8080/dep"
+                            }
+                        ],
+                        "image": "g18/tools:latest",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 5,
+                            "periodSeconds": 1,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "sut",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 6,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "200m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-ftzc5",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 5,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-ftzc5",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:40Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:40Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://50570d111148032e51d1fc9ba3ae04845b03f2d6c9da5d427cb90459d945edcc",
+                        "image": "docker.io/g18/tools:latest",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0dba18bf75c3e7d6f488db383ab8428f601cb38ba055dfeaf242ede85976eddb",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "containerd://50570d111148032e51d1fc9ba3ae04845b03f2d6c9da5d427cb90459d945edcc",
+                                "exitCode": 2,
+                                "finishedAt": "2026-10-10T09:27:40Z",
+                                "reason": "Error",
+                                "startedAt": "2026-10-10T09:27:33Z"
+                            }
+                        },
+                        "name": "sut",
+                        "ready": false,
+                        "restartCount": 6,
+                        "started": false,
+                        "state": {
+                            "waiting": {
+                                "message": "back-off 2m40s restarting failed container=sut pod=sut-799cd5c56-d8fqp_g18-o-fp-l90-r1(ea6b8eca-0192-473c-92eb-a786ee5d8c47)",
+                                "reason": "CrashLoopBackOff"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Running",
+                "podIP": "10.244.0.42",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.42"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T09:23:58Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:23:58Z",
+                "generateName": "sut-799cd5c56-",
+                "labels": {
+                    "app": "sut",
+                    "pod-template-hash": "799cd5c56"
+                },
+                "name": "sut-799cd5c56-l9vjl",
+                "namespace": "g18-o-fp-l90-r1",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "sut-799cd5c56",
+                        "uid": "5da65645-a967-4b5f-9e9b-4a2495cbe3e2"
+                    }
+                ],
+                "resourceVersion": "22533",
+                "uid": "ba0d3e18-890c-4e90-8baf-9a3c1af781be"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "ROLE",
+                                "value": "sut"
+                            },
+                            {
+                                "name": "WORKERS",
+                                "value": "4"
+                            },
+                            {
+                                "name": "WORK_UNITS",
+                                "value": "100000"
+                            },
+                            {
+                                "name": "LIVENESS_WINDOW_MS",
+                                "value": "5000"
+                            },
+                            {
+                                "name": "DEP_URL",
+                                "value": "http://dep:8080/dep"
+                            }
+                        ],
+                        "image": "g18/tools:latest",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 5,
+                            "periodSeconds": 1,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "sut",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 6,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "200m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-z4h4c",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 5,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-z4h4c",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:46Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:46Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://7f633872cc330410af5a050b56169e560c65a2413bc8c289637f90a90ab6dd84",
+                        "image": "docker.io/g18/tools:latest",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0dba18bf75c3e7d6f488db383ab8428f601cb38ba055dfeaf242ede85976eddb",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "containerd://7f633872cc330410af5a050b56169e560c65a2413bc8c289637f90a90ab6dd84",
+                                "exitCode": 2,
+                                "finishedAt": "2026-10-10T09:27:45Z",
+                                "reason": "Error",
+                                "startedAt": "2026-10-10T09:27:38Z"
+                            }
+                        },
+                        "name": "sut",
+                        "ready": false,
+                        "restartCount": 6,
+                        "started": false,
+                        "state": {
+                            "waiting": {
+                                "message": "back-off 2m40s restarting failed container=sut pod=sut-799cd5c56-l9vjl_g18-o-fp-l90-r1(ba0d3e18-890c-4e90-8baf-9a3c1af781be)",
+                                "reason": "CrashLoopBackOff"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Running",
+                "podIP": "10.244.0.41",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.41"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T09:23:58Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:23:58Z",
+                "generateName": "sut-799cd5c56-",
+                "labels": {
+                    "app": "sut",
+                    "pod-template-hash": "799cd5c56"
+                },
+                "name": "sut-799cd5c56-shv8t",
+                "namespace": "g18-o-fp-l90-r1",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "sut-799cd5c56",
+                        "uid": "5da65645-a967-4b5f-9e9b-4a2495cbe3e2"
+                    }
+                ],
+                "resourceVersion": "22561",
+                "uid": "2e5e568b-f3d5-409d-9c2d-60e9fb195196"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "ROLE",
+                                "value": "sut"
+                            },
+                            {
+                                "name": "WORKERS",
+                                "value": "4"
+                            },
+                            {
+                                "name": "WORK_UNITS",
+                                "value": "100000"
+                            },
+                            {
+                                "name": "LIVENESS_WINDOW_MS",
+                                "value": "5000"
+                            },
+                            {
+                                "name": "DEP_URL",
+                                "value": "http://dep:8080/dep"
+                            }
+                        ],
+                        "image": "g18/tools:latest",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 5,
+                            "periodSeconds": 1,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "sut",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 6,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "200m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q2q7g",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 5,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-q2q7g",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:53Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:53Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://868885efc7439d9d01dac8ae59308b59d4b8ba35616aab2081fd4f4375f726db",
+                        "image": "docker.io/g18/tools:latest",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0dba18bf75c3e7d6f488db383ab8428f601cb38ba055dfeaf242ede85976eddb",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "containerd://868885efc7439d9d01dac8ae59308b59d4b8ba35616aab2081fd4f4375f726db",
+                                "exitCode": 2,
+                                "finishedAt": "2026-10-10T09:27:52Z",
+                                "reason": "Error",
+                                "startedAt": "2026-10-10T09:27:46Z"
+                            }
+                        },
+                        "name": "sut",
+                        "ready": false,
+                        "restartCount": 6,
+                        "started": false,
+                        "state": {
+                            "waiting": {
+                                "message": "back-off 2m40s restarting failed container=sut pod=sut-799cd5c56-shv8t_g18-o-fp-l90-r1(2e5e568b-f3d5-409d-9c2d-60e9fb195196)",
+                                "reason": "CrashLoopBackOff"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Running",
+                "podIP": "10.244.0.39",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.39"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T09:23:58Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:23:58Z",
+                "generateName": "sut-799cd5c56-",
+                "labels": {
+                    "app": "sut",
+                    "pod-template-hash": "799cd5c56"
+                },
+                "name": "sut-799cd5c56-zm8ls",
+                "namespace": "g18-o-fp-l90-r1",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "sut-799cd5c56",
+                        "uid": "5da65645-a967-4b5f-9e9b-4a2495cbe3e2"
+                    }
+                ],
+                "resourceVersion": "22553",
+                "uid": "e3d16828-29f9-4b3d-bfe4-c166e8ae58d2"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "ROLE",
+                                "value": "sut"
+                            },
+                            {
+                                "name": "WORKERS",
+                                "value": "4"
+                            },
+                            {
+                                "name": "WORK_UNITS",
+                                "value": "100000"
+                            },
+                            {
+                                "name": "LIVENESS_WINDOW_MS",
+                                "value": "5000"
+                            },
+                            {
+                                "name": "DEP_URL",
+                                "value": "http://dep:8080/dep"
+                            }
+                        ],
+                        "image": "g18/tools:latest",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 5,
+                            "periodSeconds": 1,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "sut",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 6,
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "200m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-gg96p",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 5,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-gg96p",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:52Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:27:52Z",
+                        "message": "containers with unready status: [sut]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T09:23:58Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://122d97c1601ec653c743cffaf51ee1eebcbdf21f8ef3c64793af70d3efa00129",
+                        "image": "docker.io/g18/tools:latest",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0dba18bf75c3e7d6f488db383ab8428f601cb38ba055dfeaf242ede85976eddb",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "containerd://122d97c1601ec653c743cffaf51ee1eebcbdf21f8ef3c64793af70d3efa00129",
+                                "exitCode": 2,
+                                "finishedAt": "2026-10-10T09:27:51Z",
+                                "reason": "Error",
+                                "startedAt": "2026-10-10T09:27:44Z"
+                            }
+                        },
+                        "name": "sut",
+                        "ready": false,
+                        "restartCount": 6,
+                        "started": false,
+                        "state": {
+                            "waiting": {
+                                "message": "back-off 2m40s restarting failed container=sut pod=sut-799cd5c56-zm8ls_g18-o-fp-l90-r1(e3d16828-29f9-4b3d-bfe4-c166e8ae58d2)",
+                                "reason": "CrashLoopBackOff"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Running",
+                "podIP": "10.244.0.43",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.43"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T09:23:58Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

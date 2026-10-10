@@ -1,0 +1,558 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:47:05Z",
+                "generateName": "catalogue-6977556589-",
+                "labels": {
+                    "name": "catalogue",
+                    "pod-template-hash": "6977556589"
+                },
+                "name": "catalogue-6977556589-r22cz",
+                "namespace": "g18-r-ski-1",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "catalogue-6977556589",
+                        "uid": "e319c007-cf00-4912-ad69-c1b9b330f8f0"
+                    }
+                ],
+                "resourceVersion": "55562",
+                "uid": "e4116443-37b3-4dc3-8ff0-7e15e683a44d"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": [
+                            "echo \"G18WRAP wrapper started\"; /app -port=8080 -DSN='catalogue_user:default_password@tcp(catalogue-db.g18-db:3306)/socksdb'; echo \"G18-FAILURE catalogue process exited\"; while true; do sleep 3600; done"
+                        ],
+                        "command": [
+                            "/bin/sh",
+                            "-c"
+                        ],
+                        "image": "weaveworksdemos/catalogue:0.3.5",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/health",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 300,
+                            "periodSeconds": 3,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "catalogue",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "200m",
+                                "memory": "200Mi"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "100Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "capabilities": {
+                                "add": [
+                                    "NET_BIND_SERVICE"
+                                ],
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "readOnlyRootFilesystem": true,
+                            "runAsNonRoot": true,
+                            "runAsUser": 10001
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-p95d4",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "command": [
+                            "/ski"
+                        ],
+                        "env": [
+                            {
+                                "name": "POD_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "POD_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "TARGET_CONTAINER",
+                                "value": "catalogue"
+                            },
+                            {
+                                "name": "FAIL_PATTERN",
+                                "value": "G18-FAILURE"
+                            },
+                            {
+                                "name": "READY_PATTERN",
+                                "value": "transport=HTTP"
+                            },
+                            {
+                                "name": "READY_FALLBACK_ADDR",
+                                "value": "127.0.0.1:8080"
+                            },
+                            {
+                                "name": "READY_FALLBACK_AFTER_MS",
+                                "value": "3000"
+                            },
+                            {
+                                "name": "KILL_MATCH",
+                                "value": "G18WRAP"
+                            },
+                            {
+                                "name": "KILL_DELAY_MS",
+                                "value": "2000"
+                            }
+                        ],
+                        "image": "g18/tools:latest",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "ski",
+                        "resources": {
+                            "limits": {
+                                "cpu": "100m",
+                                "memory": "64Mi"
+                            },
+                            "requests": {
+                                "cpu": "20m",
+                                "memory": "16Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "runAsNonRoot": true,
+                            "runAsUser": 10001
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-p95d4",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "readinessGates": [
+                    {
+                        "conditionType": "g18.io/ski-ready"
+                    }
+                ],
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "g18-ski",
+                "serviceAccountName": "g18-ski",
+                "shareProcessNamespace": true,
+                "terminationGracePeriodSeconds": 2,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-p95d4",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T13:50:12Z",
+                        "message": "ready log line",
+                        "reason": "SKI",
+                        "status": "True",
+                        "type": "g18.io/ski-ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T13:47:05Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T13:50:14Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T13:50:12Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T13:47:05Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://c8c1ccae0109fa90b7d17311bea00c74b0cd174ce49d56939b46fcfcf96b7291",
+                        "image": "docker.io/weaveworksdemos/catalogue:0.3.5",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0147a65b7116569439eefb1a6dbed455fe022464ef70e0c3cab75bc4a226b39b",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "containerd://d881b88175edc064b88d5a2db59ae3f3357ec8bb1f786f13b5af02989d0b4e27",
+                                "exitCode": 137,
+                                "finishedAt": "2026-10-10T13:50:11Z",
+                                "reason": "Error",
+                                "startedAt": "2026-10-10T13:47:05Z"
+                            }
+                        },
+                        "name": "catalogue",
+                        "ready": true,
+                        "restartCount": 1,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-10-10T13:50:11Z"
+                            }
+                        }
+                    },
+                    {
+                        "containerID": "containerd://8f44c048b0a0f79fb8850057db3b25125d292864a89e35516b7c866cbccee534",
+                        "image": "docker.io/g18/tools:latest",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0dba18bf75c3e7d6f488db383ab8428f601cb38ba055dfeaf242ede85976eddb",
+                        "lastState": {},
+                        "name": "ski",
+                        "ready": true,
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-10-10T13:47:06Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Running",
+                "podIP": "10.244.0.230",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.230"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T13:47:05Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"loadgen\"},\"name\":\"loadgen\",\"namespace\":\"g18-r-ski-1\"},\"spec\":{\"containers\":[{\"command\":[\"/loadgen\"],\"env\":[{\"name\":\"TARGET\",\"value\":\"http://catalogue/catalogue\"},{\"name\":\"MODE\",\"value\":\"closed\"},{\"name\":\"RATE\",\"value\":\"0\"},{\"name\":\"USERS\",\"value\":\"100\"},{\"name\":\"PACE_MS\",\"value\":\"1000\"},{\"name\":\"DURATION_S\",\"value\":\"290\"},{\"name\":\"TIMEOUT_MS\",\"value\":\"500\"},{\"name\":\"SEED\",\"value\":\"1\"},{\"name\":\"BURST_AT_S\",\"value\":\"-1\"},{\"name\":\"BURST_LEN_S\",\"value\":\"0\"},{\"name\":\"BURST_RATE\",\"value\":\"0\"}],\"image\":\"g18/tools:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"loadgen\",\"resources\":{\"limits\":{\"cpu\":\"1\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"64Mi\"}}}],\"restartPolicy\":\"Never\"}}\n"
+                },
+                "creationTimestamp": "2026-10-10T13:49:08Z",
+                "labels": {
+                    "app": "loadgen"
+                },
+                "name": "loadgen",
+                "namespace": "g18-r-ski-1",
+                "resourceVersion": "55866",
+                "uid": "29ebc785-4bb1-4454-858b-e3fa5db829e5"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "/loadgen"
+                        ],
+                        "env": [
+                            {
+                                "name": "TARGET",
+                                "value": "http://catalogue/catalogue"
+                            },
+                            {
+                                "name": "MODE",
+                                "value": "closed"
+                            },
+                            {
+                                "name": "RATE",
+                                "value": "0"
+                            },
+                            {
+                                "name": "USERS",
+                                "value": "100"
+                            },
+                            {
+                                "name": "PACE_MS",
+                                "value": "1000"
+                            },
+                            {
+                                "name": "DURATION_S",
+                                "value": "290"
+                            },
+                            {
+                                "name": "TIMEOUT_MS",
+                                "value": "500"
+                            },
+                            {
+                                "name": "SEED",
+                                "value": "1"
+                            },
+                            {
+                                "name": "BURST_AT_S",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "BURST_LEN_S",
+                                "value": "0"
+                            },
+                            {
+                                "name": "BURST_RATE",
+                                "value": "0"
+                            }
+                        ],
+                        "image": "g18/tools:latest",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "loadgen",
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "512Mi"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "64Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-96jfq",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-96jfq",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T13:49:08Z",
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T13:54:00Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T13:54:00Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T13:49:08Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://cee353ab6a30941fac6ba39a41be68612ff92dcf74bc416006610dca350f304b",
+                        "image": "docker.io/g18/tools:latest",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0dba18bf75c3e7d6f488db383ab8428f601cb38ba055dfeaf242ede85976eddb",
+                        "lastState": {},
+                        "name": "loadgen",
+                        "ready": false,
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://cee353ab6a30941fac6ba39a41be68612ff92dcf74bc416006610dca350f304b",
+                                "exitCode": 0,
+                                "finishedAt": "2026-10-10T13:53:59Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-10-10T13:49:08Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Succeeded",
+                "podIP": "10.244.0.231",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.231"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T13:49:08Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

@@ -1,0 +1,462 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:30:49Z",
+                "generateName": "catalogue-78ccbcd447-",
+                "labels": {
+                    "name": "catalogue",
+                    "pod-template-hash": "78ccbcd447"
+                },
+                "name": "catalogue-78ccbcd447-ms58w",
+                "namespace": "g18-r-fp-3",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "catalogue-78ccbcd447",
+                        "uid": "75bd8b82-3155-417e-8a01-66e2c5fbf310"
+                    }
+                ],
+                "resourceVersion": "59481",
+                "uid": "bef36af6-8758-4c98-9404-5f47e8de55c3"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": [
+                            "echo \"G18WRAP wrapper started\"; /app -port=8080 -DSN='catalogue_user:default_password@tcp(catalogue-db.g18-db:3306)/socksdb'; echo \"G18-FAILURE catalogue process exited\"; while true; do sleep 3600; done"
+                        ],
+                        "command": [
+                            "/bin/sh",
+                            "-c"
+                        ],
+                        "image": "weaveworksdemos/catalogue:0.3.5",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/health",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 1,
+                            "periodSeconds": 1,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "name": "catalogue",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/health",
+                                "port": 8080,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 1,
+                            "periodSeconds": 1,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "200m",
+                                "memory": "200Mi"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "100Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "capabilities": {
+                                "add": [
+                                    "NET_BIND_SERVICE"
+                                ],
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "readOnlyRootFilesystem": true,
+                            "runAsNonRoot": true,
+                            "runAsUser": 10001
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-p9h52",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 2,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-p9h52",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T14:30:49Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T14:33:57Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T14:33:57Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T14:30:49Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://5731bfc37ae36ea396e94494fb108ebda67b5aed8aab1d599e22dd10ede1c09b",
+                        "image": "docker.io/weaveworksdemos/catalogue:0.3.5",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0147a65b7116569439eefb1a6dbed455fe022464ef70e0c3cab75bc4a226b39b",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "containerd://0426edd78bffb67777de4c4fa9cd81db8162eb464961808de86815fd50ba7b90",
+                                "exitCode": 137,
+                                "finishedAt": "2026-10-10T14:33:55Z",
+                                "reason": "Error",
+                                "startedAt": "2026-10-10T14:30:50Z"
+                            }
+                        },
+                        "name": "catalogue",
+                        "ready": true,
+                        "restartCount": 1,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-10-10T14:33:56Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Running",
+                "podIP": "10.244.0.240",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.240"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T14:30:49Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"loadgen\"},\"name\":\"loadgen\",\"namespace\":\"g18-r-fp-3\"},\"spec\":{\"containers\":[{\"command\":[\"/loadgen\"],\"env\":[{\"name\":\"TARGET\",\"value\":\"http://catalogue/catalogue\"},{\"name\":\"MODE\",\"value\":\"closed\"},{\"name\":\"RATE\",\"value\":\"0\"},{\"name\":\"USERS\",\"value\":\"100\"},{\"name\":\"PACE_MS\",\"value\":\"1000\"},{\"name\":\"DURATION_S\",\"value\":\"290\"},{\"name\":\"TIMEOUT_MS\",\"value\":\"500\"},{\"name\":\"SEED\",\"value\":\"3\"},{\"name\":\"BURST_AT_S\",\"value\":\"-1\"},{\"name\":\"BURST_LEN_S\",\"value\":\"0\"},{\"name\":\"BURST_RATE\",\"value\":\"0\"}],\"image\":\"g18/tools:latest\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"loadgen\",\"resources\":{\"limits\":{\"cpu\":\"1\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"64Mi\"}}}],\"restartPolicy\":\"Never\"}}\n"
+                },
+                "creationTimestamp": "2026-10-10T14:32:52Z",
+                "labels": {
+                    "app": "loadgen"
+                },
+                "name": "loadgen",
+                "namespace": "g18-r-fp-3",
+                "resourceVersion": "59785",
+                "uid": "5e48f540-2d37-48ac-9baa-26eaff5a42f3"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "/loadgen"
+                        ],
+                        "env": [
+                            {
+                                "name": "TARGET",
+                                "value": "http://catalogue/catalogue"
+                            },
+                            {
+                                "name": "MODE",
+                                "value": "closed"
+                            },
+                            {
+                                "name": "RATE",
+                                "value": "0"
+                            },
+                            {
+                                "name": "USERS",
+                                "value": "100"
+                            },
+                            {
+                                "name": "PACE_MS",
+                                "value": "1000"
+                            },
+                            {
+                                "name": "DURATION_S",
+                                "value": "290"
+                            },
+                            {
+                                "name": "TIMEOUT_MS",
+                                "value": "500"
+                            },
+                            {
+                                "name": "SEED",
+                                "value": "3"
+                            },
+                            {
+                                "name": "BURST_AT_S",
+                                "value": "-1"
+                            },
+                            {
+                                "name": "BURST_LEN_S",
+                                "value": "0"
+                            },
+                            {
+                                "name": "BURST_RATE",
+                                "value": "0"
+                            }
+                        ],
+                        "image": "g18/tools:latest",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "loadgen",
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "512Mi"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "64Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-62pmt",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "g18-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-62pmt",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T14:32:52Z",
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T14:37:44Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T14:37:44Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-10T14:32:52Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://3088cecad9c90a07ba251a506c6a39225532c58387848c20ab47dac0679b0225",
+                        "image": "docker.io/g18/tools:latest",
+                        "imageID": "docker.io/library/import-2026-10-09@sha256:0dba18bf75c3e7d6f488db383ab8428f601cb38ba055dfeaf242ede85976eddb",
+                        "lastState": {},
+                        "name": "loadgen",
+                        "ready": false,
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://3088cecad9c90a07ba251a506c6a39225532c58387848c20ab47dac0679b0225",
+                                "exitCode": 0,
+                                "finishedAt": "2026-10-10T14:37:43Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-10-10T14:32:52Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.19.0.2",
+                "phase": "Succeeded",
+                "podIP": "10.244.0.241",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.241"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-10T14:32:52Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

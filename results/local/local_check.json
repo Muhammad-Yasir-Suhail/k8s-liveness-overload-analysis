@@ -1,0 +1,34 @@
+{
+  "mode": "docker --cpus=0.5",
+  "capacity": 39.375,
+  "loads": {
+    "50": {
+      "success": 1,
+      "healthz_med_ms": 1.2,
+      "healthz_fail": 0,
+      "healthz_n": 10,
+      "livez_med_ms": 1.1,
+      "livez_fail": 0
+    },
+    "90": {
+      "success": 1,
+      "healthz_med_ms": 1.45,
+      "healthz_fail": 0,
+      "healthz_n": 10,
+      "livez_med_ms": 1.15,
+      "livez_fail": 0
+    },
+    "150": {
+      "success": 0.3047520661157025,
+      "healthz_med_ms": 1000.85,
+      "healthz_fail": 10,
+      "healthz_n": 10,
+      "livez_med_ms": 1.8,
+      "livez_fail": 0
+    }
+  },
+  "hang": {
+    "livez_dead_after_s": 5.071082353591919,
+    "naive_never_failed": true
+  }
+}

@@ -1,0 +1,78 @@
+# Overload / hang / stall experiments (the research gap + proposed method).
+# Rendered by experiments/lib.sh. Variables: NS REPLICAS WORKERS WORK_UNITS
+# WINDOW_MS CPU LIVENESS (a ready-made, indented livenessProbe block or empty)
+apiVersion: v1
+kind: Namespace
+metadata: { name: ${NS} }
+---
+# Downstream dependency. NOT probed for liveness. Its /admin/stall endpoint
+# makes every /work call wait -> a shared brown-out for experiment D.
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: dep, namespace: ${NS}, labels: { app: dep } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: dep } }
+  template:
+    metadata: { labels: { app: dep } }
+    spec:
+      containers:
+        - name: dep
+          image: g18/tools:latest
+          imagePullPolicy: IfNotPresent
+          env: [ { name: ROLE, value: dep } ]
+          ports: [ { containerPort: 8080 } ]
+          resources:
+            requests: { cpu: 50m, memory: 16Mi }
+            limits:   { cpu: 500m, memory: 64Mi }
+          readinessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            periodSeconds: 2
+---
+apiVersion: v1
+kind: Service
+metadata: { name: dep, namespace: ${NS} }
+spec:
+  selector: { app: dep }
+  ports: [ { port: 8080, targetPort: 8080 } ]
+---
+# The replicated service under test. HPA is absent on purpose: the replica
+# count is FIXED so the only adaptive loop is the one being studied.
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: sut, namespace: ${NS}, labels: { app: sut } }
+spec:
+  replicas: ${REPLICAS}
+  selector: { matchLabels: { app: sut } }
+  template:
+    metadata: { labels: { app: sut } }
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+        - name: sut
+          image: g18/tools:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - { name: ROLE, value: sut }
+            - { name: WORKERS, value: "${WORKERS}" }
+            - { name: WORK_UNITS, value: "${WORK_UNITS}" }
+            - { name: LIVENESS_WINDOW_MS, value: "${WINDOW_MS}" }
+            - { name: DEP_URL, value: "http://dep:8080/dep" }
+          ports: [ { containerPort: 8080 } ]
+          resources:
+            requests: { cpu: "${CPU}", memory: 32Mi }
+            limits:   { cpu: "${CPU}", memory: 128Mi }
+          # Readiness is IDENTICAL in every arm. Only liveness changes.
+          readinessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 6
+${LIVENESS}
+---
+apiVersion: v1
+kind: Service
+metadata: { name: sut, namespace: ${NS} }
+spec:
+  selector: { app: sut }
+  ports: [ { port: 80, targetPort: 8080 } ]

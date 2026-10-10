@@ -1,0 +1,114 @@
+PROFILE=quick
+[15:31:59] Checking tools
+[15:32:00]   docker 29.9.0, kind v0.23.0, Client Version: version.Info{Major:"1", Minor:"27", GitVersion:"v1.27.13", GitCommit:"96b450c75ae3c48037f651b4777646dcca855ed0", GitTreeState:"clean", BuildDate:"2024-04-16T15:03:38Z", GoVersion:"go1.21.9", Compiler:"gc", Platform:"linux/amd64"}
+[15:32:00] Cluster 'g18' already exists -- reusing it
+[15:32:00] Building g18/tools:latest (Go service, load generator, SKI sidecar, governor)
+[15:32:03] Pulling SockShop images
+[15:32:09] Loading images into the kind node (no registry needed afterwards)
+Image: "g18/tools:latest" with ID "sha256:1085a14b9468ecbd49ca652a053b49bbab45d3bd5eb42e9f8666e89d6e9890dc" not yet present on node "g18-control-plane", loading...
+Image: "weaveworksdemos/catalogue:0.3.5" with ID "sha256:0147a65b7116569439eefb1a6dbed455fe022464ef70e0c3cab75bc4a226b39b" not yet present on node "g18-control-plane", loading...
+Image: "weaveworksdemos/catalogue-db:0.3.0" with ID "sha256:7ba74ec9adf88f6625b8d85d3323d1ee5232b39877e1590021ea485cf9457251" not yet present on node "g18-control-plane", loading...
+[15:32:18] Deploying catalogue-db (namespace g18-db)
+[15:32:19] Recording environment
+date: 2026-10-10T15:32:19+05:00
+host_os: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64 GNU/Linux
+cpu: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+cpus: 8
+mem_total_kb: 10069628
+docker: 29.9.0
+kind: kind v0.23.0 go1.21.10 linux/amd64
+kubectl: Client Version: version.Info{Major:"1", Minor:"27", GitVersion:"v1.27.13", GitCommit:"96b450c75ae3c48037f651b4777646dcca855ed0", GitTreeState:"clean", BuildDate:"2024-04-16T15:03:38Z", GoVersion:"go1.21.9", Compiler:"gc", Platform:"linux/amd64"}
+server: Server Version: version.Info{Major:"1", Minor:"27", GitVersion:"v1.27.13", GitCommit:"96b450c75ae3c48037f651b4777646dcca855ed0", GitTreeState:"clean", BuildDate:"2024-05-14T01:33:58Z", GoVersion:"go1.21.9", Compiler:"gc", Platform:"linux/amd64"}
+python: Python 3.10.12
+[15:32:19] Setup complete. Next: bash experiments/01_repro.sh
+[15:32:19] [1/9] R_DP_r1 exists, skipping
+[15:32:19] [2/9] R_FP_r1 exists, skipping
+[15:32:19] [3/9] R_SKI_r1 exists, skipping
+[15:32:19] [4/9] R_DP_r2 exists, skipping
+[15:32:19] [5/9] R_FP_r2 exists, skipping
+[15:32:19] [6/9] R_SKI_r2 exists, skipping
+[15:32:19] [7/9] R_DP_r3 exists, skipping
+[15:32:19] [8/9] R_FP_r3 exists, skipping
+[15:32:19] [9/9] R_SKI_r3 exists, skipping
+[15:32:19] Experiment R finished -> results/testbed/R
+[15:32:19] Capacity per replica: 10.8 req/s, replicas: 6
+[15:32:19]     O_NONE_l90_r1 exists, skipping
+[15:32:19]     O_DP_l90_r1 exists, skipping
+[15:32:19]     O_FP_l90_r1 exists, skipping
+[15:32:19]     O_ISO_l90_r1 exists, skipping
+[15:32:19]     O_A_l90_r1 exists, skipping
+[15:32:19]     O_B_l90_r1 exists, skipping
+[15:32:19]     O_AB_l90_r1 exists, skipping
+[15:32:19] Experiment O finished -> results/testbed/O
+[15:32:19]     P_NONE_l70_r1 exists, skipping
+[15:32:19]     P_DP_l70_r1 exists, skipping
+[15:32:19]     P_FP_l70_r1 exists, skipping
+[15:32:19]     P_ISO_l70_r1 exists, skipping
+[15:32:19]     P_A_l70_r1 exists, skipping
+[15:32:19]     P_B_l70_r1 exists, skipping
+[15:32:19]     P_AB_l70_r1  rate=45.4/s  ns=g18-p-ab-l70-r1
+[15:32:52]     load spike to 97.2/s for 60s at +60s (base 45.4/s)
+[15:37:02] Experiment P finished -> results/testbed/P
+[15:37:03]     H_NONE_l70_r1  rate=45.4/s  ns=g18-h-none-l70-r1
+[15:38:27]     hang injected into sut-57b9bccb7-29nt2 at +60s
+[15:41:43]     H_FP_l70_r1  rate=45.4/s  ns=g18-h-fp-l70-r1
+[15:43:10]     hang injected into sut-799cd5c56-2fzcc at +60s
+[15:46:20]     H_ISO_l70_r1  rate=45.4/s  ns=g18-h-iso-l70-r1
+[15:47:44]     hang injected into sut-86b8fb5cb8-6mlbl at +60s
+[15:51:00]     H_A_l70_r1  rate=45.4/s  ns=g18-h-a-l70-r1
+[15:52:27]     hang injected into sut-85d97897f6-6qr54 at +60s
+[15:55:42]     H_B_l70_r1  rate=45.4/s  ns=g18-h-b-l70-r1
+[15:57:06]     hang injected into sut-57b9bccb7-c9xzb at +60s
+[16:00:21]     H_AB_l70_r1  rate=45.4/s  ns=g18-h-ab-l70-r1
+[16:01:45]     hang injected into sut-57b9bccb7-8mx2x at +60s
+[16:05:00]     H_NONE_l70_r2  rate=45.4/s  ns=g18-h-none-l70-r2
+[16:06:23]     hang injected into sut-57b9bccb7-4wxf5 at +60s
+[16:09:40]     H_FP_l70_r2  rate=45.4/s  ns=g18-h-fp-l70-r2
+[16:11:03]     hang injected into sut-799cd5c56-j5xpr at +60s
+[16:14:18]     H_ISO_l70_r2  rate=45.4/s  ns=g18-h-iso-l70-r2
+[16:15:45]     hang injected into sut-86b8fb5cb8-jntxb at +60s
+[16:18:56]     H_A_l70_r2  rate=45.4/s  ns=g18-h-a-l70-r2
+[16:20:21]     hang injected into sut-85d97897f6-67m2q at +60s
+[16:23:37]     H_B_l70_r2  rate=45.4/s  ns=g18-h-b-l70-r2
+[16:25:01]     hang injected into sut-57b9bccb7-7z7qw at +60s
+[16:28:17]     H_AB_l70_r2  rate=45.4/s  ns=g18-h-ab-l70-r2
+[16:29:40]     hang injected into sut-57b9bccb7-9m6wp at +60s
+[16:32:56] Experiment H finished -> results/testbed/H
+[16:32:56]     D_NONE_l70_r1  rate=45.4/s  ns=g18-d-none-l70-r1
+[16:34:19]     dependency stalled for 20s at +60s
+[16:37:30]     D_FP_l70_r1  rate=45.4/s  ns=g18-d-fp-l70-r1
+[16:38:55]     dependency stalled for 20s at +60s
+[16:42:11]     D_ISO_l70_r1  rate=45.4/s  ns=g18-d-iso-l70-r1
+[16:43:35]     dependency stalled for 20s at +60s
+[16:46:51]     D_A_l70_r1  rate=45.4/s  ns=g18-d-a-l70-r1
+[16:48:15]     dependency stalled for 20s at +60s
+[16:51:26]     D_B_l70_r1  rate=45.4/s  ns=g18-d-b-l70-r1
+[16:52:53]     dependency stalled for 20s at +60s
+[16:56:10]     D_AB_l70_r1  rate=45.4/s  ns=g18-d-ab-l70-r1
+[16:57:33]     dependency stalled for 20s at +60s
+[17:00:44]     D_NONE_l70_r2  rate=45.4/s  ns=g18-d-none-l70-r2
+[17:02:09]     dependency stalled for 20s at +60s
+[17:05:25]     D_FP_l70_r2  rate=45.4/s  ns=g18-d-fp-l70-r2
+[17:06:50]     dependency stalled for 20s at +60s
+[17:10:06]     D_ISO_l70_r2  rate=45.4/s  ns=g18-d-iso-l70-r2
+[17:11:31]     dependency stalled for 20s at +60s
+[17:14:46]     D_A_l70_r2  rate=45.4/s  ns=g18-d-a-l70-r2
+[17:16:10]     dependency stalled for 20s at +60s
+[17:19:27]     D_B_l70_r2  rate=45.4/s  ns=g18-d-b-l70-r2
+[17:20:51]     dependency stalled for 20s at +60s
+[17:24:07]     D_AB_l70_r2  rate=45.4/s  ns=g18-d-ab-l70-r2
+[17:25:31]     dependency stalled for 20s at +60s
+[17:28:47] Experiment D finished -> results/testbed/D
+reading /home/user/g18/results/testbed
+Traceback (most recent call last):
+  File "/home/user/g18/analysis/analyze_testbed.py", line 575, in <module>
+    main()
+  File "/home/user/g18/analysis/analyze_testbed.py", line 404, in main
+    R = analyze_R()
+  File "/home/user/g18/analysis/analyze_testbed.py", line 208, in analyze_R
+    ts = read_timeseries(os.path.join(d, "timeseries.csv"))
+  File "/home/user/g18/analysis/analyze_testbed.py", line 120, in read_timeseries
+    for r in csv.DictReader(f):
+  File "/usr/lib/python3.10/csv.py", line 111, in __next__
+    row = next(self.reader)
+_csv.Error: line contains NUL

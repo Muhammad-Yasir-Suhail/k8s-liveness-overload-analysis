@@ -1,0 +1,459 @@
+%=======================================================================
+%  Cloud Computing -- 100 Day Research Assignment
+%  Group G18 | Section A
+%  Cutoff 1: Research Proposal
+%
+%  Compile with: pdfLaTeX  (Overleaf: Menu > Compiler > pdfLaTeX)
+%  Bibliography: BibTeX    (references.bib must be in the same folder)
+%=======================================================================
+
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% --- listing style for YAML / shell snippets -------------------------
+\lstdefinestyle{cfg}{
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue!60!black},
+  commentstyle=\color{gray},
+  breaklines=true,
+  frame=single,
+  framesep=4pt,
+  showstringspaces=false
+}
+\lstset{style=cfg}
+
+% --- convenience macros ----------------------------------------------
+\newcommand{\rqbox}[1]{%
+  \begin{center}
+  \fbox{\begin{minipage}{0.94\columnwidth}\itshape #1\end{minipage}}
+  \end{center}}
+
+\begin{document}
+
+\title{When Self-Healing Hurts: An Empirical Study of\\
+Liveness-Probe-Induced Restart Cascades in\\
+Kubernetes Under Overload}
+
+\author{
+\IEEEauthorblockN{M. Yasir Suhail}
+\IEEEauthorblockA{\textit{Department of Computer Science}\\
+\textit{FAST-NUCES, Islamabad}\\
+Section A, Group G18}
+\and
+\IEEEauthorblockN{M. Aashir Sheraz}
+\IEEEauthorblockA{\textit{Department of Computer Science}\\
+\textit{FAST-NUCES, Islamabad}\\
+Section A, Group G18}
+}
+
+\maketitle
+
+%======================================================================
+\begin{abstract}
+Kubernetes restarts containers that fail their liveness probes, on the
+assumption that a restart repairs a broken container and therefore
+improves service availability. This assumption breaks down under
+overload. When an application is merely slow rather than dead, its
+health endpoint may exceed the probe timeout, the container is
+restarted, and its share of the offered load is redistributed onto the
+surviving replicas, pushing them toward the same threshold. The
+resulting positive feedback loop is widely described in operational
+practice, but it has not been characterised quantitatively. Existing
+academic work on Kubernetes probes measures how quickly probes
+\emph{detect} genuine failures; none measures the conditions under
+which probes \emph{manufacture} failures. This proposal sets out a
+controlled experimental study that sweeps the liveness-probe
+configuration space under three load regimes on a multi-node cluster
+and locates the boundary beyond which restart-based self-healing
+reduces availability relative to running with no liveness probe at
+all. The intended contributions are an empirically derived instability
+boundary, a quantification of the availability penalty inside that
+region, and a reproducible open-source testbed.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Kubernetes, self-adaptive systems, liveness probes, container
+orchestration, service availability, cascading failure, fault
+tolerance
+\end{IEEEkeywords}
+
+%======================================================================
+\section{Group and Roles}
+
+This research is conducted by Group~G18, Section~A. Both members
+contribute to experimental design, analysis, and writing; the division
+below reflects primary ownership rather than exclusive responsibility.
+
+\begin{table}[h]
+\centering
+\caption{Group Composition and Role Allocation}
+\label{tab:roles}
+\footnotesize
+\begin{tabular}{@{}p{0.26\columnwidth}p{0.16\columnwidth}p{0.44\columnwidth}@{}}
+\toprule
+\textbf{Member} & \textbf{Role} & \textbf{Primary Responsibility} \\
+\midrule
+M. Yasir Suhail & Primary /
+Infrastructure & Cluster provisioning, service under test,
+observability stack, experiment automation \\
+\addlinespace
+M. Aashir Sheraz & Co-investigator /
+Analysis & Load modelling, statistical analysis, literature
+review, manuscript preparation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%======================================================================
+\section{Research Area and Title}
+
+\textbf{Research Area:} Autonomous / Self-Adaptive Cloud Computing.
+
+\textbf{Title:} \emph{When Self-Healing Hurts: An Empirical Study of
+Liveness-Probe-Induced Restart Cascades in Kubernetes Under Overload.}
+
+The work sits squarely within self-adaptive cloud computing because
+its object of study is an autonomic control loop --- the kubelet's
+monitor--decide--act cycle over container health --- and the
+conditions under which that loop becomes destabilising rather than
+corrective.
+
+%======================================================================
+\section{Problem Statement and Motivation}
+
+Container orchestrators are expected to detect and repair failures
+without human intervention, and this self-healing capability is a
+principal reason for their adoption \cite{casalicchio2019}. Kubernetes
+implements it through two mechanisms: redundant replica Pods, and the
+restarting of containers judged unhealthy. Health is judged by
+\emph{probes}: the kubelet periodically issues an HTTP request, gRPC
+call, or command against each container, and a container that fails a
+configured number of consecutive liveness probes is restarted
+\cite{roberts2025}.
+
+The mechanism rests on an implicit assumption --- that a container
+which fails to answer a probe in time is broken, and that restarting
+it is therefore a repair. Under overload this assumption is unsound. A
+saturated container is not broken; it is slow. If its health endpoint
+is served by the same constrained resources as production traffic,
+queueing delay inflates the probe response time past the configured
+timeout. The kubelet then terminates a container that was still
+serving useful work.
+
+The second-order effect is the more serious one. The terminated
+replica's share of the offered load is redistributed across the
+remaining replicas, raising their utilisation and their health-endpoint
+latency, which makes their own probes more likely to time out. The
+system can enter a positive feedback loop in which the repair
+mechanism is itself the source of continued failure. The Kubernetes
+documentation warns that incorrect liveness-probe implementation can
+cause cascading failures, and production incident reports describe the
+phenomenon concretely --- one widely cited case required relaxing the
+probe timeout and removing a CPU limit before the loop would break.
+
+The motivation for studying this is practical. Probe parameters are
+four integers in a YAML manifest, typically copied between projects
+and rarely tuned against measured application behaviour. Practitioners
+are advised to configure them ``carefully,'' but no published study
+tells them where the boundary of safety lies, how far inside the
+dangerous region a given configuration sits, or how much availability
+is lost when it does. A misconfiguration that is harmless at 50\%
+utilisation may be catastrophic at 150\%, and nothing in the current
+literature allows an operator to anticipate that transition.
+
+%======================================================================
+\section{Research Gap}
+
+Prior work on Kubernetes health monitoring addresses adjacent
+questions but leaves this one open.
+
+\textbf{Probe speed, not probe correctness.} Roberts et
+al.~\cite{roberts2025} model and measure the time Kubernetes probes
+take to detect genuine container failure, and propose signal-based
+monitoring as a faster alternative. Probes are their baseline, not
+their subject. Their evaluation deploys a single Pod per service on a
+single node with throughput capped at a fixed rate, and injects
+failure by terminating a process once at a fixed time. With one
+replica per service there is no load redistribution, so the feedback
+loop studied here cannot form by construction. The authors themselves
+note that their failure model is simple and does not include bursts or
+randomised arrival.
+
+\textbf{An unexplained observation in that same work.} Under their
+aggressively tuned ``fast probe'' configuration, the container
+restarted several times on average and service availability fell by
+approximately 4\% relative to the signal-based alternative, with the
+additional restarts attributed to failing liveness probes. The authors
+state that it remains unclear why most of these restarts occur after
+the injected failure. The phenomenon was observed as a side effect and
+left unexplained.
+
+\textbf{An explicitly stated open problem.} The same paper's future
+work proposes injecting network latency to emulate slow HTTP responses
+and states the expectation that poll-based monitoring will erroneously
+detect high latency as container failure. The prediction is on record;
+the experiment has not been performed.
+
+\textbf{The opposite failure mode has been studied.} Flora et
+al.~\cite{flora2022} find that Kubernetes probes fail to detect
+certain classes of fault, including business-logic errors and long
+response times --- that is, false negatives. The complementary case,
+in which probes fire on healthy-but-loaded containers, has not
+received equivalent treatment.
+
+Broader microservice fault taxonomies \cite{silva2022,zhou2021} and
+resilience-testing frameworks \cite{heorhiadi2016} catalogue
+application- and infrastructure-level faults, but do not treat the
+orchestrator's own health-check subsystem as a fault source.
+
+\textbf{Statement of the gap.} To the best of our knowledge, no
+published study systematically varies Kubernetes liveness-probe
+parameters under sustained overload, with replica counts sufficient
+for load redistribution, and measures the resulting effect on service
+availability against a no-probe control. The failure mode is
+established as operational folklore and observed incidentally in the
+literature, but it has not been characterised.
+
+%======================================================================
+\section{Research Question}
+
+\rqbox{Under sustained overload, at what combinations of Kubernetes
+liveness-probe parameters (\texttt{timeoutSeconds},
+\texttt{periodSeconds}, \texttt{failureThreshold}) and container CPU
+limits does restart-based self-healing reduce service availability
+rather than restore it, and how large is the resulting degradation
+relative to a deployment configured with no liveness probe?}
+
+Two subsidiary questions follow:
+
+\begin{itemize}
+\item \textbf{SQ1.} How does offered load mediate the relationship
+between probe aggressiveness and restart frequency --- that is, does
+the instability boundary shift with utilisation, and by how much?
+\item \textbf{SQ2.} Does the severity of degradation scale with
+replica count, as the load-redistribution mechanism would predict?
+\end{itemize}
+
+%======================================================================
+\section{Objectives}
+
+\begin{enumerate}
+\item \textbf{O1 --- Construct a reproducible testbed.} Build a
+multi-node Kubernetes cluster hosting an instrumented service whose
+health endpoint contends with production traffic for the same
+constrained resources, together with a deterministic load generator
+and a metrics pipeline capable of attributing each restart to a probe
+failure.
+
+\item \textbf{O2 --- Characterise the load--latency--probe coupling.}
+Establish empirically how offered load translates into health-endpoint
+response latency, and identify the utilisation level at which that
+latency begins to approach representative probe timeouts. This
+establishes the causal chain on which the remainder of the study
+depends.
+
+\item \textbf{O3 --- Locate the instability boundary.} Sweep the probe
+parameter space across three load regimes and identify the region in
+which restart cascades emerge, using a no-liveness-probe deployment as
+the control arm.
+
+\item \textbf{O4 --- Quantify the penalty and derive guidance.}
+Measure the availability, error-rate, and tail-latency cost of
+operating inside the unstable region, and translate the findings into
+a defensible configuration envelope for practitioners.
+\end{enumerate}
+
+%======================================================================
+\section{Proposed Methodology}
+
+The study is a controlled factorial experiment. The strategy is to fix
+every source of variation except probe configuration and offered load,
+so that any difference in availability is attributable to the health-check
+subsystem rather than to the application or the autoscaler.
+
+\subsection{Experimental Platform}
+
+A \texttt{kind} (Kubernetes-in-Docker) cluster of one control-plane
+node and three worker nodes, running on a single commodity laptop.
+Container CPU limits are set low (on the order of 200~millicores) so
+that the cgroup quota binds well before the host's own capacity does;
+this keeps the measured saturation point a property of the pod
+configuration rather than of the test machine. Horizontal Pod
+Autoscaling is disabled throughout and replica count is held fixed, so
+that the only adaptive mechanism active in the system is the one under
+study.
+
+\subsection{Service Under Test}
+
+A purpose-built HTTP service exposing two endpoints:
+
+\begin{itemize}
+\item \texttt{/work} --- performs bounded CPU-intensive work,
+representing production traffic.
+\item \texttt{/healthz} --- the probe target, served from the same
+bounded worker pool as \texttt{/work}.
+\end{itemize}
+
+The shared worker pool is the essential design decision. It reproduces
+the common real-world pattern in which a health endpoint is handled by
+the same thread pool, event loop, or CPU quota as application
+requests, and it is the mechanism by which load is transmitted into
+probe latency. A service whose health endpoint is independent of load
+cannot exhibit the phenomenon under study.
+
+\subsection{Fault and Workload Model}
+
+No faults are injected. This is a deliberate departure from prior work
+and is central to the contribution: the study asks whether the
+orchestrator generates failures in a system where none exist. The
+independent stressor is offered load alone, applied as a
+constant-arrival-rate workload at three levels --- approximately
+50\%, 100\%, and 150\% of measured single-replica saturation
+throughput --- using \texttt{k6}.
+
+\subsection{Experimental Design}
+
+\begin{table}[h]
+\centering
+\caption{Factors and Levels}
+\label{tab:factors}
+\footnotesize
+\begin{tabular}{@{}p{0.34\columnwidth}p{0.30\columnwidth}p{0.22\columnwidth}@{}}
+\toprule
+\textbf{Factor} & \textbf{Levels} & \textbf{Type} \\
+\midrule
+\texttt{timeoutSeconds} & 1, 2, 5 & Independent \\
+\texttt{failureThreshold} & 1, 3, 10 & Independent \\
+Offered load & 50\%, 100\%, 150\% & Independent \\
+\texttt{periodSeconds} & 5 (fixed) & Controlled \\
+Replica count & 6 (fixed) & Controlled \\
+CPU limit & 200m (fixed) & Controlled \\
+Liveness probe absent & control arm & Baseline \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The full factorial gives $3 \times 3 \times 3 = 27$ treatment
+configurations, plus three control runs (one per load level) in which
+no liveness probe is defined. Each configuration is executed five
+times to accommodate the stochastic nature of cascade onset, giving
+150 runs of approximately ten minutes each. Execution is fully
+scripted and unattended.
+
+\subsection{Instrumentation and Analysis}
+
+Prometheus with \texttt{kube-state-metrics} records restart counts and
+Pod readiness over time; kubelet events attribute each restart to a
+specific probe failure; \texttt{k6} reports client-observed success
+rate and latency distribution. Treatment arms are compared against the
+matched control using non-parametric tests, and the parameter space is
+visualised as a heatmap over which the instability boundary is drawn.
+
+\subsection{Threats to Validity}
+
+Single-host deployment constrains achievable scale, and a synthetic
+single-service workload is not a substitute for a production
+microservice graph. Both are acknowledged limitations; the design
+compensates by holding the confounded variables fixed and by reporting
+the saturation point as a measured rather than assumed quantity.
+Should the cascade prove difficult to induce reproducibly, the
+mitigation is to tighten the CPU limit and reduce the probe timeout
+until the coupling established in O2 is strong enough to trip the
+mechanism.
+
+%======================================================================
+\section{Expected Metrics and Outcomes}
+
+\subsection{Metrics}
+
+\begin{table}[h]
+\centering
+\caption{Measured Quantities}
+\label{tab:metrics}
+\footnotesize
+\begin{tabular}{@{}p{0.30\columnwidth}p{0.60\columnwidth}@{}}
+\toprule
+\textbf{Metric} & \textbf{Definition} \\
+\midrule
+Restart count & Cumulative container restarts attributable to
+liveness-probe failure \\
+\addlinespace
+Availability & Time-weighted fraction of the run during which the
+service sustained target throughput \\
+\addlinespace
+Success rate & Proportion of client requests completing without
+timeout or HTTP 5xx \\
+\addlinespace
+Tail latency & P95 and P99 client-observed response time \\
+\addlinespace
+Recovery time & Interval from first probe-induced restart to
+restoration of steady-state throughput \\
+\addlinespace
+Cascade depth & Maximum number of replicas simultaneously
+unavailable \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Anticipated Outcomes}
+
+\begin{enumerate}
+\item \textbf{An instability boundary.} A demarcation in
+$(\texttt{timeout}, \texttt{failureThreshold}, \texttt{load})$ space
+separating configurations in which the liveness probe improves
+availability from those in which it degrades it.
+
+\item \textbf{A quantified penalty.} The magnitude of availability
+loss inside the unstable region, expressed relative to the no-probe
+control. The central and most counter-intuitive expected finding is
+the existence of a non-empty region in which \emph{no liveness probe
+is strictly preferable to a misconfigured one}.
+
+\item \textbf{A configuration envelope.} Evidence-based guidance
+relating safe probe parameters to measured application saturation
+behaviour, replacing the qualitative advice presently available.
+
+\item \textbf{A reproducible artifact.} A public repository
+containing the service, manifests, automation, raw results, and
+analysis notebooks.
+\end{enumerate}
+
+A negative result --- that cascades do not materialise within the
+swept range --- remains a publishable finding, since it would bound
+the practical severity of a failure mode currently treated as a
+serious operational risk.
+
+%======================================================================
+\section{Project Resources}
+
+\begin{table}[h]
+\centering
+\caption{Deliverable Infrastructure}
+\label{tab:resources}
+\footnotesize
+\begin{tabular}{@{}p{0.24\columnwidth}p{0.66\columnwidth}@{}}
+\toprule
+\textbf{Resource} & \textbf{Status} \\
+\midrule
+Overleaf & Project created; read link shared with instructor \\
+GitHub & Public repository initialised \\
+Google Sheet & Row for G18 completed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%======================================================================
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

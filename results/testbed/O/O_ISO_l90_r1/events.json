@@ -1,0 +1,1345 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T09:28:44.122562Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "dep-6c7bbff984-vdg4w",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22779",
+                "uid": "ea00c03c-4d4f-4337-a22c-fd20278d932e"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-o-iso-l90-r1/dep-6c7bbff984-vdg4w to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "dep-6c7bbff984-vdg4w.18dd210323344a12",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22788",
+                "uid": "4f74d407-4ee4-4d7a-8be3-6ce2df4809d9"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:45Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{dep}",
+                "kind": "Pod",
+                "name": "dep-6c7bbff984-vdg4w",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22782",
+                "uid": "ea00c03c-4d4f-4337-a22c-fd20278d932e"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:45Z",
+            "message": "Container image \"g18/tools:latest\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:45Z",
+                "name": "dep-6c7bbff984-vdg4w.18dd21036085e873",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22835",
+                "uid": "80a9b982-36f0-439a-ac8a-399e43fe2521"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:45Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{dep}",
+                "kind": "Pod",
+                "name": "dep-6c7bbff984-vdg4w",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22782",
+                "uid": "ea00c03c-4d4f-4337-a22c-fd20278d932e"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:45Z",
+            "message": "Created container dep",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:45Z",
+                "name": "dep-6c7bbff984-vdg4w.18dd21037baecc69",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22836",
+                "uid": "9092e470-1e10-4ae1-b283-09b1a7a34410"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:46Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{dep}",
+                "kind": "Pod",
+                "name": "dep-6c7bbff984-vdg4w",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22782",
+                "uid": "ea00c03c-4d4f-4337-a22c-fd20278d932e"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:46Z",
+            "message": "Started container dep",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:46Z",
+                "name": "dep-6c7bbff984-vdg4w.18dd21039ea7ba54",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22843",
+                "uid": "989de8b3-af09-46ae-ae56-3efcf40a8bda"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:44Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "dep-6c7bbff984",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22775",
+                "uid": "4223710a-be6f-4982-bcde-655ef44b0c65"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:44Z",
+            "message": "Created pod: dep-6c7bbff984-vdg4w",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "dep-6c7bbff984.18dd2103207ec64a",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22781",
+                "uid": "beedc8b9-dc9f-49d7-8dd2-16a1c8e10781"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:44Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "dep",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22774",
+                "uid": "26d72fac-d374-4cb0-800a-d108eb683b7e"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:44Z",
+            "message": "Scaled up replica set dep-6c7bbff984 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "dep.18dd21031e86467b",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22777",
+                "uid": "f29fb1b5-0d0f-41a0-8878-cb49ced5981c"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T09:29:09.903227Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22934",
+                "uid": "90d01add-69e9-40dc-8cac-eb4b1c1830d9"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-o-iso-l90-r1/loadgen to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:29:09Z",
+                "name": "loadgen.18dd210923da0d65",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22936",
+                "uid": "8e9dce08-be44-494c-a387-065f8b47a53f"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:29:10Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{loadgen}",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22935",
+                "uid": "90d01add-69e9-40dc-8cac-eb4b1c1830d9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:29:10Z",
+            "message": "Container image \"g18/tools:latest\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:29:10Z",
+                "name": "loadgen.18dd21094eaca7a0",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22939",
+                "uid": "fb7fd344-b08f-48b9-b361-f1c0b2f078de"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:29:10Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{loadgen}",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22935",
+                "uid": "90d01add-69e9-40dc-8cac-eb4b1c1830d9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:29:10Z",
+            "message": "Created container loadgen",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:29:10Z",
+                "name": "loadgen.18dd21095429f553",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22940",
+                "uid": "5b1f6210-28a5-40f1-b3ca-f25fc8592ea8"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:29:11Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{loadgen}",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22935",
+                "uid": "90d01add-69e9-40dc-8cac-eb4b1c1830d9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:29:11Z",
+            "message": "Started container loadgen",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:29:11Z",
+                "name": "loadgen.18dd21096915fa08",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22943",
+                "uid": "610b3ed5-4b4a-4bb2-b7b1-c1db9aeebde6"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T09:28:44.241305Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-7krhr",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22794",
+                "uid": "3f35ff83-2469-4bd6-8a6f-99a8bff7ca44"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-o-iso-l90-r1/sut-86b8fb5cb8-7krhr to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8-7krhr.18dd21032a482820",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22804",
+                "uid": "5edd651d-5bf5-41f4-87a5-048afc2cc086"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:45Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-7krhr",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22799",
+                "uid": "3f35ff83-2469-4bd6-8a6f-99a8bff7ca44"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:45Z",
+            "message": "Container image \"g18/tools:latest\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:45Z",
+                "name": "sut-86b8fb5cb8-7krhr.18dd210391dc16f2",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22839",
+                "uid": "e0a51b4f-bb5d-4564-bb5a-78c34ecf3e2f"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:46Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-7krhr",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22799",
+                "uid": "3f35ff83-2469-4bd6-8a6f-99a8bff7ca44"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:46Z",
+            "message": "Created container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:46Z",
+                "name": "sut-86b8fb5cb8-7krhr.18dd21039d62aa53",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22842",
+                "uid": "667ccf1b-e53f-4ace-ae19-12ab4dfaa1a6"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:47Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-7krhr",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22799",
+                "uid": "3f35ff83-2469-4bd6-8a6f-99a8bff7ca44"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:47Z",
+            "message": "Started container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:47Z",
+                "name": "sut-86b8fb5cb8-7krhr.18dd2103dc570d36",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22863",
+                "uid": "eeeb704f-eb3c-4112-ad31-96848362eaf7"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T09:28:44.280630Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-f847t",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22800",
+                "uid": "fea4e5de-d921-433a-822c-0ca0b10edd5a"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-o-iso-l90-r1/sut-86b8fb5cb8-f847t to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8-f847t.18dd21032ca0241b",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22815",
+                "uid": "edc7cada-2aa7-4014-8f51-1d3f465bbdfa"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:46Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-f847t",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22808",
+                "uid": "fea4e5de-d921-433a-822c-0ca0b10edd5a"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:46Z",
+            "message": "Container image \"g18/tools:latest\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:46Z",
+                "name": "sut-86b8fb5cb8-f847t.18dd210393305158",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22840",
+                "uid": "398a0f3f-ca72-4a80-bafb-1560c2844a79"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:46Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-f847t",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22808",
+                "uid": "fea4e5de-d921-433a-822c-0ca0b10edd5a"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:46Z",
+            "message": "Created container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:46Z",
+                "name": "sut-86b8fb5cb8-f847t.18dd2103a0b40f9c",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22844",
+                "uid": "aadff8bd-1b14-4dc2-b800-64af09756391"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:47Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-f847t",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22808",
+                "uid": "fea4e5de-d921-433a-822c-0ca0b10edd5a"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:47Z",
+            "message": "Started container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:47Z",
+                "name": "sut-86b8fb5cb8-f847t.18dd2103dc4c0fc4",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22862",
+                "uid": "34efe0b5-1485-48d8-8139-882f590167c4"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T09:28:44.279838Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-fhrj8",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22798",
+                "uid": "6ca63e00-42ff-4a6d-9291-fc938f9d1efb"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-o-iso-l90-r1/sut-86b8fb5cb8-fhrj8 to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8-fhrj8.18dd21032c9418d8",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22812",
+                "uid": "be74bbb0-b94d-48cb-8b1a-a98707c35bd3"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:46Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-fhrj8",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22805",
+                "uid": "6ca63e00-42ff-4a6d-9291-fc938f9d1efb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:46Z",
+            "message": "Container image \"g18/tools:latest\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:46Z",
+                "name": "sut-86b8fb5cb8-fhrj8.18dd2103a733caec",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22847",
+                "uid": "42bc0416-0a5c-40a2-9588-f6e4f850eeca"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:46Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-fhrj8",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22805",
+                "uid": "6ca63e00-42ff-4a6d-9291-fc938f9d1efb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:46Z",
+            "message": "Created container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:46Z",
+                "name": "sut-86b8fb5cb8-fhrj8.18dd2103b7da44bc",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22859",
+                "uid": "11d9aaad-ca5b-4828-9757-d9db3062fb0d"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:47Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-fhrj8",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22805",
+                "uid": "6ca63e00-42ff-4a6d-9291-fc938f9d1efb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:47Z",
+            "message": "Started container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:47Z",
+                "name": "sut-86b8fb5cb8-fhrj8.18dd2103e8bcb5cf",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22865",
+                "uid": "8b27b13c-76b7-4b5c-99e4-1a5ec5538c00"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T09:28:44.349706Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-vzppb",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22811",
+                "uid": "9b9205e4-da6b-4f07-926a-b8a7d3324c7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-o-iso-l90-r1/sut-86b8fb5cb8-vzppb to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8-vzppb.18dd210330be32a7",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22821",
+                "uid": "07db4f2b-c394-4420-8de7-95e014f4abed"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:45Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-vzppb",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22816",
+                "uid": "9b9205e4-da6b-4f07-926a-b8a7d3324c7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:45Z",
+            "message": "Container image \"g18/tools:latest\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:45Z",
+                "name": "sut-86b8fb5cb8-vzppb.18dd21038977ae82",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22837",
+                "uid": "7cc682e7-47f5-4a8f-b893-6d1ec0888816"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:45Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-vzppb",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22816",
+                "uid": "9b9205e4-da6b-4f07-926a-b8a7d3324c7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:45Z",
+            "message": "Created container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:45Z",
+                "name": "sut-86b8fb5cb8-vzppb.18dd210390c5d942",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22838",
+                "uid": "e5e42f7d-6ab0-4723-a9ba-e20fb7666903"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:46Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-vzppb",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22816",
+                "uid": "9b9205e4-da6b-4f07-926a-b8a7d3324c7f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:46Z",
+            "message": "Started container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:46Z",
+                "name": "sut-86b8fb5cb8-vzppb.18dd2103cd709ffd",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22860",
+                "uid": "f7df2e41-7d55-4fc7-a059-c358bfefb6ed"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T09:28:44.385551Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-wm6qp",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22810",
+                "uid": "37aa0cd0-a7cf-4a4b-93ba-e2903cb21b53"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-o-iso-l90-r1/sut-86b8fb5cb8-wm6qp to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8-wm6qp.18dd210332e1189e",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22824",
+                "uid": "5949e54d-9fcb-43a2-9ae9-ca3cce5edd79"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:46Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-wm6qp",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22818",
+                "uid": "37aa0cd0-a7cf-4a4b-93ba-e2903cb21b53"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:46Z",
+            "message": "Container image \"g18/tools:latest\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:46Z",
+                "name": "sut-86b8fb5cb8-wm6qp.18dd2103a244a761",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22845",
+                "uid": "fb6d0fdb-7282-440a-9335-6aca5e82bde4"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:46Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-wm6qp",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22818",
+                "uid": "37aa0cd0-a7cf-4a4b-93ba-e2903cb21b53"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:46Z",
+            "message": "Created container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:46Z",
+                "name": "sut-86b8fb5cb8-wm6qp.18dd2103b0f6abb1",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22851",
+                "uid": "72fba117-17ca-4f1b-b780-5703e1859d1f"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:47Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-wm6qp",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22818",
+                "uid": "37aa0cd0-a7cf-4a4b-93ba-e2903cb21b53"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:47Z",
+            "message": "Started container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:47Z",
+                "name": "sut-86b8fb5cb8-wm6qp.18dd2103e3a29958",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22864",
+                "uid": "cd956499-5f6d-4b23-96c7-65fee58ab074"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:47Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-wm6qp",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22818",
+                "uid": "37aa0cd0-a7cf-4a4b-93ba-e2903cb21b53"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:47Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.50:8080/healthz\": dial tcp 10.244.0.50:8080: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:47Z",
+                "name": "sut-86b8fb5cb8-wm6qp.18dd2103e8ff44d0",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22867",
+                "uid": "0ca96517-af9c-42b0-b839-0dafbfb27530"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T09:28:44.385163Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-wmfqb",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22809",
+                "uid": "f6494cf3-4203-40c4-8016-73daadf6f0c3"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-o-iso-l90-r1/sut-86b8fb5cb8-wmfqb to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8-wmfqb.18dd210332db4e86",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22822",
+                "uid": "89948d1d-2678-43e0-961e-c68d3ea86994"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:46Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-wmfqb",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22817",
+                "uid": "f6494cf3-4203-40c4-8016-73daadf6f0c3"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:46Z",
+            "message": "Container image \"g18/tools:latest\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:46Z",
+                "name": "sut-86b8fb5cb8-wmfqb.18dd21039bb58fb1",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22841",
+                "uid": "8f5cde44-b754-454e-874a-b37b9420e715"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:46Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-wmfqb",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22817",
+                "uid": "f6494cf3-4203-40c4-8016-73daadf6f0c3"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:46Z",
+            "message": "Created container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:46Z",
+                "name": "sut-86b8fb5cb8-wmfqb.18dd2103a66542e5",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22846",
+                "uid": "4094f585-36c0-486c-b8a7-62211c0088ff"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:47Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{sut}",
+                "kind": "Pod",
+                "name": "sut-86b8fb5cb8-wmfqb",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22817",
+                "uid": "f6494cf3-4203-40c4-8016-73daadf6f0c3"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:47Z",
+            "message": "Started container sut",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:47Z",
+                "name": "sut-86b8fb5cb8-wmfqb.18dd2103d7aabea2",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22861",
+                "uid": "dba25414-03c2-48d3-bc7a-cdd97360e72f"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:44Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "sut-86b8fb5cb8",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22792",
+                "uid": "6c7880f2-89f0-4b19-a247-c6e08ddd7aa7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:44Z",
+            "message": "Created pod: sut-86b8fb5cb8-7krhr",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8.18dd2103280affd5",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22801",
+                "uid": "db03eca8-2ba4-4478-9abf-cfef094408fa"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:44Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "sut-86b8fb5cb8",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22792",
+                "uid": "6c7880f2-89f0-4b19-a247-c6e08ddd7aa7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:44Z",
+            "message": "Created pod: sut-86b8fb5cb8-fhrj8",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8.18dd21032a3e0126",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22807",
+                "uid": "dd61e67e-6455-4cf2-ae03-de73f925ee30"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:44Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "sut-86b8fb5cb8",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22792",
+                "uid": "6c7880f2-89f0-4b19-a247-c6e08ddd7aa7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:44Z",
+            "message": "Created pod: sut-86b8fb5cb8-f847t",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8.18dd21032bb72468",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22814",
+                "uid": "60795c2a-1412-429e-a50d-d5d4e7effdc8"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:44Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "sut-86b8fb5cb8",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22792",
+                "uid": "6c7880f2-89f0-4b19-a247-c6e08ddd7aa7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:44Z",
+            "message": "Created pod: sut-86b8fb5cb8-wmfqb",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8.18dd21032df1093f",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22820",
+                "uid": "13460aa1-22c5-45df-973d-27551c3282ec"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:44Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "sut-86b8fb5cb8",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22792",
+                "uid": "6c7880f2-89f0-4b19-a247-c6e08ddd7aa7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:44Z",
+            "message": "Created pod: sut-86b8fb5cb8-wm6qp",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8.18dd21032dfaeb74",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22823",
+                "uid": "551901dd-d115-4d82-a80b-d0c692809d48"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:44Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "sut-86b8fb5cb8",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22792",
+                "uid": "6c7880f2-89f0-4b19-a247-c6e08ddd7aa7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:44Z",
+            "message": "Created pod: sut-86b8fb5cb8-vzppb",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut-86b8fb5cb8.18dd21032dfda69a",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22827",
+                "uid": "07088a3a-d33f-461e-b17b-7f326608b934"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T09:28:44Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "sut",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22789",
+                "uid": "f0812c33-142f-42ad-91f2-6474b41dcb54"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T09:28:44Z",
+            "message": "Scaled up replica set sut-86b8fb5cb8 to 6",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T09:28:44Z",
+                "name": "sut.18dd210326783f71",
+                "namespace": "g18-o-iso-l90-r1",
+                "resourceVersion": "22795",
+                "uid": "9f266acb-eb93-4229-ab6b-c0f3aa59bb27"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

@@ -1,0 +1,9 @@
+2026/10/10 14:12:33.237371 SKI start pod=g18-r-ski-2/catalogue-6977556589-5pldq target=catalogue fail="G18-FAILURE" ready="transport=HTTP"
+2026/10/10 14:12:33.346690 SKI-GATE False (container not running)
+2026/10/10 14:12:33.969969 SKI-FOLLOW container=catalogue restarts=0 started=2026-10-10T14:12:32Z
+2026/10/10 14:12:33.990119 SKI-GATE True (ready log line)
+2026/10/10 14:15:35.901656 SKI-DETECT failure signal: "G18-FAILURE catalogue process exited"
+2026/10/10 14:15:35.923047 SKI-GATE False (failure signal)
+2026/10/10 14:15:37.924836 SKI-KILL pid=7 cmd="/bin/sh -c echo \"G18WRAP wrapper started\"; /app -port=8080 -DSN='catalogue_user:default_password@tcp(catalogue-db.g18-db:3306)/socksdb'; echo \"G18-FAILURE catalogue process exited\"; while true; do sleep 3600; done "
+2026/10/10 14:15:39.423967 SKI-FOLLOW container=catalogue restarts=1 started=2026-10-10T14:15:38Z
+2026/10/10 14:15:39.443283 SKI-GATE True (ready log line)

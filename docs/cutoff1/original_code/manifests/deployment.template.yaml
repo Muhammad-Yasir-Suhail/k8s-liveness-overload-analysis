@@ -1,0 +1,48 @@
+# Templated deployment. run-sweep.sh substitutes __PROBE__ with either the
+# liveness block (treatment arms) or nothing at all (control arm).
+#
+# HPA is deliberately absent. Replicas are FIXED. The only adaptive
+# mechanism in this system is the probe loop under study.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sut
+  labels: { app: sut }
+spec:
+  replicas: 6
+  selector:
+    matchLabels: { app: sut }
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: { maxSurge: 0, maxUnavailable: 1 }
+  template:
+    metadata:
+      labels: { app: sut }
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+        - name: sut
+          image: g18/sut:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: WORKERS
+              value: "4"
+            - name: WORK_MS
+              value: "50"
+          resources:
+            requests: { cpu: "200m", memory: "64Mi" }
+            # The limit is the control for single-host testing: the cgroup
+            # quota binds long before the laptop's own capacity does, so the
+            # saturation point is a property of the pod, not the machine.
+            limits:   { cpu: "200m", memory: "128Mi" }
+
+          # Readiness stays CONSTANT across all arms. Only liveness varies.
+          # Otherwise readiness changes would confound the availability metric.
+          readinessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 6
+__PROBE__

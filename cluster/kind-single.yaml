@@ -1,0 +1,9 @@
+# Single-node cluster (DEFAULT) -- matches Roberts et al. (one node) and
+# fits an 8 GB laptop. Kubernetes version pinned to 1.27 (paper: 1.27.8).
+# The digest is the one published in the kind v0.23.0 release notes.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: g18
+nodes:
+  - role: control-plane
+    image: kindest/node:v1.27.13@sha256:17439fa5b32290e3ead39ead1250dca1d822d94a10d26f1981756cd51b24b9d8

@@ -1,0 +1,50 @@
+START 1791623302585
+2026/10/10 09:08:22 loadgen mode=open target=http://sut/work rate=25.0 users=0 dur=45s timeout=2s keepalive=false
+SEC,0,20,20,0,0,0,444.7,869.0,878.7
+SEC,1,30,23,7,0,0,1278.6,1845.2,1917.1
+SEC,2,28,1,27,0,0,1941.2,1941.2,1941.2
+SEC,3,18,0,18,0,0,NaN,NaN,NaN
+SEC,4,30,0,30,0,0,NaN,NaN,NaN
+SEC,5,25,0,25,0,0,NaN,NaN,NaN
+SEC,6,27,0,27,0,0,NaN,NaN,NaN
+SEC,7,32,0,32,0,0,NaN,NaN,NaN
+SEC,8,26,0,26,0,0,NaN,NaN,NaN
+SEC,9,20,0,20,0,0,NaN,NaN,NaN
+SEC,10,22,0,22,0,0,NaN,NaN,NaN
+SEC,11,24,0,24,0,0,NaN,NaN,NaN
+SEC,12,18,0,18,0,0,NaN,NaN,NaN
+SEC,13,32,0,32,0,0,NaN,NaN,NaN
+SEC,14,21,0,21,0,0,NaN,NaN,NaN
+SEC,15,28,0,28,0,0,NaN,NaN,NaN
+SEC,16,26,0,26,0,0,NaN,NaN,NaN
+SEC,17,26,0,26,0,0,NaN,NaN,NaN
+SEC,18,28,0,28,0,0,NaN,NaN,NaN
+SEC,19,25,0,25,0,0,NaN,NaN,NaN
+SEC,20,37,0,37,0,0,NaN,NaN,NaN
+SEC,21,30,0,30,0,0,NaN,NaN,NaN
+SEC,22,21,0,21,0,0,NaN,NaN,NaN
+SEC,23,21,0,21,0,0,NaN,NaN,NaN
+SEC,24,37,0,37,0,0,NaN,NaN,NaN
+SEC,25,23,0,23,0,0,NaN,NaN,NaN
+SEC,26,29,0,29,0,0,NaN,NaN,NaN
+SEC,27,26,0,26,0,0,NaN,NaN,NaN
+SEC,28,26,0,26,0,0,NaN,NaN,NaN
+SEC,29,18,1,17,0,0,1971.8,1971.8,1971.8
+SEC,30,21,1,20,0,0,1999.0,1999.0,1999.0
+SEC,31,25,0,25,0,0,NaN,NaN,NaN
+SEC,32,24,0,24,0,0,NaN,NaN,NaN
+SEC,33,31,0,31,0,0,NaN,NaN,NaN
+SEC,34,20,0,20,0,0,NaN,NaN,NaN
+SEC,35,34,0,34,0,0,NaN,NaN,NaN
+SEC,36,26,0,26,0,0,NaN,NaN,NaN
+SEC,37,18,0,18,0,0,NaN,NaN,NaN
+SEC,38,17,1,16,0,0,1976.4,1976.4,1976.4
+SEC,39,21,0,21,0,0,NaN,NaN,NaN
+SEC,40,22,0,22,0,0,NaN,NaN,NaN
+SEC,41,26,1,25,0,0,1998.1,1998.1,1998.1
+SEC,42,28,0,28,0,0,NaN,NaN,NaN
+2026/10/10 09:09:09 done: {"dropped":0,"duration_s":45,"failed":1086,"goodput_rps":1.0666666666666667,"http5xx":0,"mode":"open","ok":48,"other_errors":0,"p50_ms":880.281,"p95_ms":1976.374,"p99_ms":1999.002,"rate":25,"success_rate":0.042328042328042326,"timeout_ms":2000,"timeouts":1086,"total":1134,"users":0}
+SEC,43,23,0,23,0,0,NaN,NaN,NaN
+SEC,44,24,0,24,0,0,NaN,NaN,NaN
+SEC,45,0,0,0,0,0,NaN,NaN,NaN
+SUMMARY {"dropped":0,"duration_s":45,"failed":1086,"goodput_rps":1.0666666666666667,"http5xx":0,"mode":"open","ok":48,"other_errors":0,"p50_ms":880.281,"p95_ms":1976.374,"p99_ms":1999.002,"rate":25,"success_rate":0.042328042328042326,"timeout_ms":2000,"timeouts":1086,"total":1134,"users":0}

@@ -1,0 +1,426 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T13:39:56.409762Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "catalogue-78ccbcd447-2pnnl",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54615",
+                "uid": "9ed56832-2f3d-4770-987c-831be71c4775"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-r-fp-1/catalogue-78ccbcd447-2pnnl to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:39:56Z",
+                "name": "catalogue-78ccbcd447-2pnnl.18dd2eb86d87c2cd",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54623",
+                "uid": "0e9d16de-faa1-46a3-a130-9911c83cf794"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T13:39:56Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{catalogue}",
+                "kind": "Pod",
+                "name": "catalogue-78ccbcd447-2pnnl",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54618",
+                "uid": "9ed56832-2f3d-4770-987c-831be71c4775"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T13:43:02Z",
+            "message": "Container image \"weaveworksdemos/catalogue:0.3.5\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:39:56Z",
+                "name": "catalogue-78ccbcd447-2pnnl.18dd2eb88cfdb71b",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54899",
+                "uid": "89ff44e2-0126-46b5-bb4d-810947486ee2"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T13:39:56Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{catalogue}",
+                "kind": "Pod",
+                "name": "catalogue-78ccbcd447-2pnnl",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54618",
+                "uid": "9ed56832-2f3d-4770-987c-831be71c4775"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T13:43:02Z",
+            "message": "Created container catalogue",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:39:56Z",
+                "name": "catalogue-78ccbcd447-2pnnl.18dd2eb89058f5e0",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54900",
+                "uid": "5b700d71-1733-4f67-9292-a2f4b9d67d67"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T13:39:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{catalogue}",
+                "kind": "Pod",
+                "name": "catalogue-78ccbcd447-2pnnl",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54618",
+                "uid": "9ed56832-2f3d-4770-987c-831be71c4775"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T13:43:03Z",
+            "message": "Started container catalogue",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:39:57Z",
+                "name": "catalogue-78ccbcd447-2pnnl.18dd2eb89b4ebe7b",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54901",
+                "uid": "86db600e-3ae0-43ec-a1b4-94687467e263"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T13:43:00Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{catalogue}",
+                "kind": "Pod",
+                "name": "catalogue-78ccbcd447-2pnnl",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54618",
+                "uid": "9ed56832-2f3d-4770-987c-831be71c4775"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T13:43:00Z",
+            "message": "Liveness probe failed: Get \"http://10.244.0.228:8080/health\": dial tcp 10.244.0.228:8080: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:43:00Z",
+                "name": "catalogue-78ccbcd447-2pnnl.18dd2ee35794caff",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54888",
+                "uid": "e0d33679-dead-443f-9af5-00d671e99ca2"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 4,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T13:43:00Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{catalogue}",
+                "kind": "Pod",
+                "name": "catalogue-78ccbcd447-2pnnl",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54618",
+                "uid": "9ed56832-2f3d-4770-987c-831be71c4775"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T13:43:03Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.228:8080/health\": dial tcp 10.244.0.228:8080: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:43:00Z",
+                "name": "catalogue-78ccbcd447-2pnnl.18dd2ee35797c26c",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54902",
+                "uid": "a97ce589-6a7f-459d-8c5c-967b976eb0bf"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T13:43:00Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{catalogue}",
+                "kind": "Pod",
+                "name": "catalogue-78ccbcd447-2pnnl",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54618",
+                "uid": "9ed56832-2f3d-4770-987c-831be71c4775"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T13:43:00Z",
+            "message": "Container catalogue failed liveness probe, will be restarted",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:43:00Z",
+                "name": "catalogue-78ccbcd447-2pnnl.18dd2ee3579fb28d",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54893",
+                "uid": "ecce0393-fd40-4380-a91e-df605d81e266"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T13:39:56Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "catalogue-78ccbcd447",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54611",
+                "uid": "506fadc7-ecfb-4aa6-a87c-3e7ade0f7613"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T13:39:56Z",
+            "message": "Created pod: catalogue-78ccbcd447-2pnnl",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:39:56Z",
+                "name": "catalogue-78ccbcd447.18dd2eb86ca8f434",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54617",
+                "uid": "908ecc7b-2330-41e7-8e8f-fcc99e46235f"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T13:39:56Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "catalogue",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54610",
+                "uid": "94a0bdaa-8943-4a07-a365-bf8437a3e0eb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T13:39:56Z",
+            "message": "Scaled up replica set catalogue-78ccbcd447 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:39:56Z",
+                "name": "catalogue.18dd2eb86a980636",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54613",
+                "uid": "0d28b000-0803-4b61-88ab-1e97cf060d1e"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T13:41:59.326218Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54798",
+                "uid": "216625a6-253a-4ef5-9a49-87c6fa0e387f"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-r-fp-1/loadgen to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:41:59Z",
+                "name": "loadgen.18dd2ed50beb9689",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54801",
+                "uid": "ddf6b1fc-deb1-451b-ac61-ade3e66d61a7"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T13:41:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{loadgen}",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54799",
+                "uid": "216625a6-253a-4ef5-9a49-87c6fa0e387f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T13:41:59Z",
+            "message": "Container image \"g18/tools:latest\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:41:59Z",
+                "name": "loadgen.18dd2ed5267f43b4",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54805",
+                "uid": "23b42ef6-41ac-40c4-a458-e7308b53e9cd"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T13:41:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{loadgen}",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54799",
+                "uid": "216625a6-253a-4ef5-9a49-87c6fa0e387f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T13:41:59Z",
+            "message": "Created container loadgen",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:41:59Z",
+                "name": "loadgen.18dd2ed529e17e62",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54806",
+                "uid": "c56b00b5-ae36-47d3-bee0-c7d61e280b1d"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T13:41:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{loadgen}",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54799",
+                "uid": "216625a6-253a-4ef5-9a49-87c6fa0e387f"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T13:41:59Z",
+            "message": "Started container loadgen",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T13:41:59Z",
+                "name": "loadgen.18dd2ed52f212aeb",
+                "namespace": "g18-r-fp-1",
+                "resourceVersion": "54807",
+                "uid": "02140b79-625d-4641-a318-34c8daf9067a"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

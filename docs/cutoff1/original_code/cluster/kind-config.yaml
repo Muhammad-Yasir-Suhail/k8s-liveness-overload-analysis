@@ -1,0 +1,11 @@
+# 1 control-plane + 3 workers.
+# Multiple workers matter: they let replicas spread so that a restart
+# genuinely redistributes load rather than just re-queueing on one kubelet.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: g18
+nodes:
+  - role: control-plane
+  - role: worker
+  - role: worker
+  - role: worker

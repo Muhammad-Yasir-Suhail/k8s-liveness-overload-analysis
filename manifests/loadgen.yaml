@@ -1,0 +1,28 @@
+# In-cluster load generator (replaces k6 + port-forward from Cutoff 1).
+# Variables: NS LG_NAME TARGET MODE RATE USERS PACE_MS DURATION_S TIMEOUT_MS SEED
+#            BURST_AT_S BURST_LEN_S BURST_RATE (load spike; BURST_AT_S=-1 = none)
+apiVersion: v1
+kind: Pod
+metadata: { name: ${LG_NAME}, namespace: ${NS}, labels: { app: loadgen } }
+spec:
+  restartPolicy: Never
+  containers:
+    - name: loadgen
+      image: g18/tools:latest
+      imagePullPolicy: IfNotPresent
+      command: ["/loadgen"]
+      env:
+        - { name: TARGET, value: "${TARGET}" }
+        - { name: MODE, value: "${MODE}" }
+        - { name: RATE, value: "${RATE}" }
+        - { name: USERS, value: "${USERS}" }
+        - { name: PACE_MS, value: "${PACE_MS}" }
+        - { name: DURATION_S, value: "${DURATION_S}" }
+        - { name: TIMEOUT_MS, value: "${TIMEOUT_MS}" }
+        - { name: SEED, value: "${SEED}" }
+        - { name: BURST_AT_S, value: "${BURST_AT_S}" }
+        - { name: BURST_LEN_S, value: "${BURST_LEN_S}" }
+        - { name: BURST_RATE, value: "${BURST_RATE}" }
+      resources:
+        requests: { cpu: 100m, memory: 64Mi }
+        limits:   { cpu: "1", memory: 512Mi }

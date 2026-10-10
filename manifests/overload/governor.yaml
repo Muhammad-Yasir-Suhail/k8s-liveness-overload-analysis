@@ -1,0 +1,52 @@
+# Component B: Cluster-aware Restart Governor. Only deployed in arms B and AB.
+# Variables: NS PROBE_PATH THRESHOLD CORR_FRAC BUDGET_FRAC HOLD_S
+apiVersion: v1
+kind: ServiceAccount
+metadata: { name: g18-governor, namespace: ${NS} }
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata: { name: g18-governor, namespace: ${NS} }
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch", "delete"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata: { name: g18-governor, namespace: ${NS} }
+subjects: [ { kind: ServiceAccount, name: g18-governor, namespace: ${NS} } ]
+roleRef: { apiGroup: rbac.authorization.k8s.io, kind: Role, name: g18-governor }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: governor, namespace: ${NS}, labels: { app: governor } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: governor } }
+  template:
+    metadata: { labels: { app: governor } }
+    spec:
+      serviceAccountName: g18-governor
+      containers:
+        - name: governor
+          image: g18/tools:latest
+          imagePullPolicy: IfNotPresent
+          command: ["/governor"]
+          env:
+            - { name: NAMESPACE, value: "${NS}" }
+            - { name: SELECTOR, value: "app=sut" }
+            - { name: CONTAINER, value: "sut" }
+            - { name: PROBE_PATH, value: "${PROBE_PATH}" }
+            - { name: PERIOD_MS, value: "1000" }
+            - { name: TIMEOUT_MS, value: "1000" }
+            - { name: THRESHOLD, value: "${THRESHOLD}" }
+            - { name: CORR_FRAC, value: "${CORR_FRAC}" }
+            - { name: BUDGET_FRAC, value: "${BUDGET_FRAC}" }
+            - { name: HOLD_S, value: "${HOLD_S}" }
+          resources:
+            requests: { cpu: 20m, memory: 16Mi }
+            limits:   { cpu: 200m, memory: 64Mi }

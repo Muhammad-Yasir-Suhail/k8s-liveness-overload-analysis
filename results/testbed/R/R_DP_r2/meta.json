@@ -1,0 +1,16 @@
+{
+  "scenario": "R",
+  "arm": "DP",
+  "repeat": 2,
+  "pod": "catalogue-676f489f94-xznbk",
+  "t0_ms": 1791640784852,
+  "t_inject_ms": 1791640844934,
+  "duration_s": 290,
+  "warmup_restarts": 0,
+  "cg_cat0": "166354 4829184",
+  "cg_cat1": "7018517 2273280",
+  "cg_ski0": "NA NA",
+  "cg_ski1": "NA NA",
+  "t_cg0_ms": 1791640784101,
+  "t_cg1_ms": 1791640845161
+}

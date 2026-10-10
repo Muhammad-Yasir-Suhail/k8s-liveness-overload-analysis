@@ -1,0 +1,426 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T14:37:58.301516Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "catalogue-6977556589-w5x9p",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59847",
+                "uid": "55792104-6756-4218-b542-2459dd77dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-r-ski-3/catalogue-6977556589-w5x9p to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:37:58Z",
+                "name": "catalogue-6977556589-w5x9p.18dd31e31e7325e7",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59855",
+                "uid": "85575bd3-6a5b-47fb-8247-4bceca58cc73"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T14:37:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{catalogue}",
+                "kind": "Pod",
+                "name": "catalogue-6977556589-w5x9p",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59849",
+                "uid": "55792104-6756-4218-b542-2459dd77dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T14:41:04Z",
+            "message": "Container image \"weaveworksdemos/catalogue:0.3.5\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:37:58Z",
+                "name": "catalogue-6977556589-w5x9p.18dd31e33a89f55c",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "60132",
+                "uid": "1bbab93b-5040-4d08-91e4-bdbb9e9728f0"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T14:37:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{catalogue}",
+                "kind": "Pod",
+                "name": "catalogue-6977556589-w5x9p",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59849",
+                "uid": "55792104-6756-4218-b542-2459dd77dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T14:41:04Z",
+            "message": "Created container catalogue",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:37:58Z",
+                "name": "catalogue-6977556589-w5x9p.18dd31e33dff0f70",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "60133",
+                "uid": "f85ec444-b624-4940-8a9c-b4f27f5c596f"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T14:37:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{catalogue}",
+                "kind": "Pod",
+                "name": "catalogue-6977556589-w5x9p",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59849",
+                "uid": "55792104-6756-4218-b542-2459dd77dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T14:41:04Z",
+            "message": "Started container catalogue",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:37:59Z",
+                "name": "catalogue-6977556589-w5x9p.18dd31e348a761ca",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "60134",
+                "uid": "0a3f51e1-dc96-4a5b-b5ae-8fea377dbb13"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T14:37:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{ski}",
+                "kind": "Pod",
+                "name": "catalogue-6977556589-w5x9p",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59849",
+                "uid": "55792104-6756-4218-b542-2459dd77dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T14:37:59Z",
+            "message": "Container image \"g18/tools:latest\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:37:59Z",
+                "name": "catalogue-6977556589-w5x9p.18dd31e348b5a5be",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59862",
+                "uid": "341a669f-9cee-40c9-9c48-2709d9937851"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T14:37:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{ski}",
+                "kind": "Pod",
+                "name": "catalogue-6977556589-w5x9p",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59849",
+                "uid": "55792104-6756-4218-b542-2459dd77dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T14:37:59Z",
+            "message": "Created container ski",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:37:59Z",
+                "name": "catalogue-6977556589-w5x9p.18dd31e34be174fc",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59863",
+                "uid": "5b78bd41-5fd2-4b54-94fe-ce4a6b3b22fb"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T14:37:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{ski}",
+                "kind": "Pod",
+                "name": "catalogue-6977556589-w5x9p",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59849",
+                "uid": "55792104-6756-4218-b542-2459dd77dbeb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T14:37:59Z",
+            "message": "Started container ski",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:37:59Z",
+                "name": "catalogue-6977556589-w5x9p.18dd31e35e1bd762",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59867",
+                "uid": "04b751e5-4e60-45c2-84eb-518e77e2e9f1"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T14:37:58Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "catalogue-6977556589",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59843",
+                "uid": "de19e096-18f3-4cc6-ab17-77667b499630"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T14:37:58Z",
+            "message": "Created pod: catalogue-6977556589-w5x9p",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:37:58Z",
+                "name": "catalogue-6977556589.18dd31e31de4e9a6",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59850",
+                "uid": "1879cd49-d4b7-4fc9-acc4-7bc55c3f1f13"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T14:37:58Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "catalogue",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59842",
+                "uid": "0ebafd7b-f8c0-4e9b-b982-b27d234fcd58"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T14:37:58Z",
+            "message": "Scaled up replica set catalogue-6977556589 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:37:58Z",
+                "name": "catalogue.18dd31e31bfe86f9",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "59845",
+                "uid": "65786eec-e9e7-4dbc-a3ab-506ad93b6607"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-10-10T14:40:01.249262Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "60035",
+                "uid": "b5519d5b-22f8-4fbb-80a8-549f7e8b3710"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned g18-r-ski-3/loadgen to g18-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:40:01Z",
+                "name": "loadgen.18dd31ffbeb4dc39",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "60037",
+                "uid": "c0ed180d-8b87-49a3-a152-30ba3d40c3bb"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-g18-control-plane",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T14:40:01Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{loadgen}",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "60036",
+                "uid": "b5519d5b-22f8-4fbb-80a8-549f7e8b3710"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T14:40:01Z",
+            "message": "Container image \"g18/tools:latest\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:40:01Z",
+                "name": "loadgen.18dd31ffd9c7a9f0",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "60039",
+                "uid": "0eae7a2f-c6fb-4fcc-8062-4d25109a67c9"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T14:40:01Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{loadgen}",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "60036",
+                "uid": "b5519d5b-22f8-4fbb-80a8-549f7e8b3710"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T14:40:01Z",
+            "message": "Created container loadgen",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:40:01Z",
+                "name": "loadgen.18dd31ffdd80816d",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "60040",
+                "uid": "3cf2f5f5-db6d-4efc-bef1-143462d66fd4"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-10T14:40:01Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{loadgen}",
+                "kind": "Pod",
+                "name": "loadgen",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "60036",
+                "uid": "b5519d5b-22f8-4fbb-80a8-549f7e8b3710"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-10T14:40:01Z",
+            "message": "Started container loadgen",
+            "metadata": {
+                "creationTimestamp": "2026-10-10T14:40:01Z",
+                "name": "loadgen.18dd31ffe3457630",
+                "namespace": "g18-r-ski-3",
+                "resourceVersion": "60041",
+                "uid": "a4608bed-5639-4c6b-abe6-2161f3ee987d"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "g18-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "g18-control-plane"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

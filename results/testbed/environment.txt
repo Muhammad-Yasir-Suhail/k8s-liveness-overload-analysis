@@ -1,0 +1,10 @@
+date: 2026-10-10T15:32:19+05:00
+host_os: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64 GNU/Linux
+cpu: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+cpus: 8
+mem_total_kb: 10069628
+docker: 29.9.0
+kind: kind v0.23.0 go1.21.10 linux/amd64
+kubectl: Client Version: version.Info{Major:"1", Minor:"27", GitVersion:"v1.27.13", GitCommit:"96b450c75ae3c48037f651b4777646dcca855ed0", GitTreeState:"clean", BuildDate:"2024-04-16T15:03:38Z", GoVersion:"go1.21.9", Compiler:"gc", Platform:"linux/amd64"}
+server: Server Version: version.Info{Major:"1", Minor:"27", GitVersion:"v1.27.13", GitCommit:"96b450c75ae3c48037f651b4777646dcca855ed0", GitTreeState:"clean", BuildDate:"2024-05-14T01:33:58Z", GoVersion:"go1.21.9", Compiler:"gc", Platform:"linux/amd64"}
+python: Python 3.10.12

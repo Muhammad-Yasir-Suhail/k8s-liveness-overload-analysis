@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sut
+  labels: { app: sut }
+spec:
+  selector: { app: sut }
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080

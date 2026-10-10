@@ -1,0 +1,16 @@
+{
+  "scenario": "R",
+  "arm": "FP",
+  "repeat": 3,
+  "pod": "catalogue-78ccbcd447-ms58w",
+  "t0_ms": 1791642772867,
+  "t_inject_ms": 1791642832941,
+  "duration_s": 290,
+  "warmup_restarts": 0,
+  "cg_cat0": "194783 6221824",
+  "cg_cat1": "6218506 2543616",
+  "cg_ski0": "NA NA",
+  "cg_ski1": "NA NA",
+  "t_cg0_ms": 1791642772113,
+  "t_cg1_ms": 1791642833153
+}

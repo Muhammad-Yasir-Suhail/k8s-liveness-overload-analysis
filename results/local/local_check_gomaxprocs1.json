@@ -1,0 +1,34 @@
+{
+  "mode": "native process pinned to 1 core, GOMAXPROCS=1",
+  "capacity": 277.875,
+  "loads": {
+    "50": {
+      "success": 1,
+      "healthz_med_ms": 1.9000000000000001,
+      "healthz_fail": 0,
+      "healthz_n": 10,
+      "livez_med_ms": 0.4,
+      "livez_fail": 0
+    },
+    "90": {
+      "success": 1,
+      "healthz_med_ms": 49.3,
+      "healthz_fail": 0,
+      "healthz_n": 10,
+      "livez_med_ms": 23.2,
+      "livez_fail": 0
+    },
+    "150": {
+      "success": 0.276112338277059,
+      "healthz_med_ms": 1000.2,
+      "healthz_fail": 5,
+      "healthz_n": 5,
+      "livez_med_ms": 1000.3,
+      "livez_fail": 5
+    }
+  },
+  "hang": {
+    "livez_dead_after_s": 7.039988994598389,
+    "naive_never_failed": true
+  }
+}
